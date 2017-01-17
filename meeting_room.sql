@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 192.168.1.141
+Source Server         : 1
 Source Server Version : 50173
-Source Host           : 192.168.1.113:3306
+Source Host           : 192.168.1.126:3306
 Source Database       : meeting_room
 
 Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2017-01-16 20:32:06
+Date: 2017-01-17 09:46:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `Management` (
   `visible` tinyint(1) DEFAULT NULL,
   `device` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`meeting_roomid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of Management
@@ -75,7 +75,7 @@ CREATE TABLE `Pre_time` (
   `23.00` tinyint(1) NOT NULL,
   `bookdata` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of Pre_time
@@ -93,7 +93,7 @@ CREATE TABLE `Predestine` (
   `meeting_roomid` int(11) NOT NULL,
   `booker` varchar(255) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`meeting_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of Predestine
