@@ -15,7 +15,7 @@
 
     <context:property-placeholder location="classpath:jdbc.properties"/>
     <context:annotation-config/>
-    <context:component-scan base-package="com.yb.team.project.beans,com.yb.team.project.dao,com.yb.team.project.dao"/>
+    <context:component-scan base-package="com.yb.team.project.model,com.yb.team.project.dao"/>
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${c3p0.driverClass}"/>
         <property name="jdbcUrl" value="${c3p0.url}"/>

@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <!--mysql 连接数据库jar 这里选择自己本地位置-->
-    <classPathEntry location="C:/Users/Administrator.2013-20150713QZ/.m2/repository/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar" />
+    <classPathEntry location="C:\Users\123\.m2\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar" />
     <context id="testTables" targetRuntime="MyBatis3">
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
@@ -13,9 +13,9 @@
         </commentGenerator>
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.1.123:3306/Users"
+                        connectionURL="jdbc:mysql://192.168.1.126:3306/meeting_room"
                         userId="root"
-                        password="1234567">
+                        password="123456">
         </jdbcConnection>
         <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
            NUMERIC 类型解析为java.math.BigDecimal -->
@@ -24,7 +24,7 @@
         </javaTypeResolver>
 
         <!-- targetProject:生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.yb.team.project.beans"
+        <javaModelGenerator targetPackage="com.yb.team.project.model"
                             targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
@@ -48,7 +48,11 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table schema="" tableName="PRODUCTION"></table>
-        <table schema="" tableName="USER"></table>
+        <table schema="" tableName="device_table"></table>
+        <table schema="" tableName="management"></table>
+        <table schema="" tableName="meetdev_table"></table>
+        <table schema="" tableName="pre_time"></table>
+        <table schema="" tableName="predestine"></table>
+        <table schema="" tableName="user_table"></table>
     </context>
 </generatorConfiguration>
