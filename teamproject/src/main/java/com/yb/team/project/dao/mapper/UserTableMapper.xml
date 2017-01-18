@@ -1,36 +1,36 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yb.team.project.dao.UserTableMapper" >
-  <resultMap id="BaseResultMap" type="com.yb.team.project.model.UserTable" >
-    <id column="login_id" property="loginId" jdbcType="VARCHAR" />
-    <result column="account" property="account" jdbcType="VARCHAR" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="phone_number" property="phoneNumber" jdbcType="INTEGER" />
-    <result column="license_key" property="licenseKey" jdbcType="VARCHAR" />
-    <result column="is_admin" property="isAdmin" jdbcType="BIT" />
-    <result column="loginer_type" property="loginerType" jdbcType="BIT" />
-    <result column="registration" property="registration" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yb.team.project.dao.UserTableMapper">
+  <resultMap id="BaseResultMap" type="com.yb.team.project.model.UserTable">
+    <id column="login_id" jdbcType="VARCHAR" property="loginId" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone_number" jdbcType="INTEGER" property="phoneNumber" />
+    <result column="license_key" jdbcType="VARCHAR" property="licenseKey" />
+    <result column="is_admin" jdbcType="BIT" property="isAdmin" />
+    <result column="loginer_type" jdbcType="BIT" property="loginerType" />
+    <result column="registration" jdbcType="VARCHAR" property="registration" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -41,25 +41,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -70,41 +70,41 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     login_id, account, password, email, phone_number, license_key, is_admin, loginer_type, 
     registration
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yb.team.project.model.UserTableExample" >
+  <select id="selectByExample" parameterType="com.yb.team.project.model.UserTableExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     from user_table
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user_table
     where login_id = #{loginId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user_table
     where login_id = #{loginId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yb.team.project.model.UserTableExample" >
+  <delete id="deleteByExample" parameterType="com.yb.team.project.model.UserTableExample">
     delete from user_table
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yb.team.project.model.UserTable" >
+  <insert id="insert" parameterType="com.yb.team.project.model.UserTable">
     insert into user_table (login_id, account, password, 
       email, phone_number, license_key, 
       is_admin, loginer_type, registration
@@ -114,109 +114,109 @@
       #{isAdmin,jdbcType=BIT}, #{loginerType,jdbcType=BIT}, #{registration,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yb.team.project.model.UserTable" >
+  <insert id="insertSelective" parameterType="com.yb.team.project.model.UserTable">
     insert into user_table
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="loginId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
         login_id,
       </if>
-      <if test="account != null" >
+      <if test="account != null">
         account,
       </if>
-      <if test="password != null" >
+      <if test="password != null">
         password,
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email,
       </if>
-      <if test="phoneNumber != null" >
+      <if test="phoneNumber != null">
         phone_number,
       </if>
-      <if test="licenseKey != null" >
+      <if test="licenseKey != null">
         license_key,
       </if>
-      <if test="isAdmin != null" >
+      <if test="isAdmin != null">
         is_admin,
       </if>
-      <if test="loginerType != null" >
+      <if test="loginerType != null">
         loginer_type,
       </if>
-      <if test="registration != null" >
+      <if test="registration != null">
         registration,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="loginId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
         #{loginId,jdbcType=VARCHAR},
       </if>
-      <if test="account != null" >
+      <if test="account != null">
         #{account,jdbcType=VARCHAR},
       </if>
-      <if test="password != null" >
+      <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="phoneNumber != null" >
+      <if test="phoneNumber != null">
         #{phoneNumber,jdbcType=INTEGER},
       </if>
-      <if test="licenseKey != null" >
+      <if test="licenseKey != null">
         #{licenseKey,jdbcType=VARCHAR},
       </if>
-      <if test="isAdmin != null" >
+      <if test="isAdmin != null">
         #{isAdmin,jdbcType=BIT},
       </if>
-      <if test="loginerType != null" >
+      <if test="loginerType != null">
         #{loginerType,jdbcType=BIT},
       </if>
-      <if test="registration != null" >
+      <if test="registration != null">
         #{registration,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yb.team.project.model.UserTableExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.yb.team.project.model.UserTableExample" resultType="java.lang.Integer">
     select count(*) from user_table
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update user_table
-    <set >
-      <if test="record.loginId != null" >
+    <set>
+      <if test="record.loginId != null">
         login_id = #{record.loginId,jdbcType=VARCHAR},
       </if>
-      <if test="record.account != null" >
+      <if test="record.account != null">
         account = #{record.account,jdbcType=VARCHAR},
       </if>
-      <if test="record.password != null" >
+      <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
       </if>
-      <if test="record.email != null" >
+      <if test="record.email != null">
         email = #{record.email,jdbcType=VARCHAR},
       </if>
-      <if test="record.phoneNumber != null" >
+      <if test="record.phoneNumber != null">
         phone_number = #{record.phoneNumber,jdbcType=INTEGER},
       </if>
-      <if test="record.licenseKey != null" >
+      <if test="record.licenseKey != null">
         license_key = #{record.licenseKey,jdbcType=VARCHAR},
       </if>
-      <if test="record.isAdmin != null" >
+      <if test="record.isAdmin != null">
         is_admin = #{record.isAdmin,jdbcType=BIT},
       </if>
-      <if test="record.loginerType != null" >
+      <if test="record.loginerType != null">
         loginer_type = #{record.loginerType,jdbcType=BIT},
       </if>
-      <if test="record.registration != null" >
+      <if test="record.registration != null">
         registration = #{record.registration,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update user_table
     set login_id = #{record.loginId,jdbcType=VARCHAR},
       account = #{record.account,jdbcType=VARCHAR},
@@ -227,41 +227,1129 @@
       is_admin = #{record.isAdmin,jdbcType=BIT},
       loginer_type = #{record.loginerType,jdbcType=BIT},
       registration = #{record.registration,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yb.team.project.model.UserTable" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.yb.team.project.model.UserTable">
     update user_table
-    <set >
-      <if test="account != null" >
+    <set>
+      <if test="account != null">
         account = #{account,jdbcType=VARCHAR},
       </if>
-      <if test="password != null" >
+      <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="phoneNumber != null" >
+      <if test="phoneNumber != null">
         phone_number = #{phoneNumber,jdbcType=INTEGER},
       </if>
-      <if test="licenseKey != null" >
+      <if test="licenseKey != null">
         license_key = #{licenseKey,jdbcType=VARCHAR},
       </if>
-      <if test="isAdmin != null" >
+      <if test="isAdmin != null">
         is_admin = #{isAdmin,jdbcType=BIT},
       </if>
-      <if test="loginerType != null" >
+      <if test="loginerType != null">
         loginer_type = #{loginerType,jdbcType=BIT},
       </if>
-      <if test="registration != null" >
+      <if test="registration != null">
         registration = #{registration,jdbcType=VARCHAR},
       </if>
     </set>
     where login_id = #{loginId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yb.team.project.model.UserTable" >
+  <update id="updateByPrimaryKey" parameterType="com.yb.team.project.model.UserTable">
+    update user_table
+    set account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=INTEGER},
+      license_key = #{licenseKey,jdbcType=VARCHAR},
+      is_admin = #{isAdmin,jdbcType=BIT},
+      loginer_type = #{loginerType,jdbcType=BIT},
+      registration = #{registration,jdbcType=VARCHAR}
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yb.team.project.model.UserTable">
+    <id column="login_id" jdbcType="VARCHAR" property="loginId" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone_number" jdbcType="INTEGER" property="phoneNumber" />
+    <result column="license_key" jdbcType="VARCHAR" property="licenseKey" />
+    <result column="is_admin" jdbcType="BIT" property="isAdmin" />
+    <result column="loginer_type" jdbcType="BIT" property="loginerType" />
+    <result column="registration" jdbcType="VARCHAR" property="registration" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    login_id, account, password, email, phone_number, license_key, is_admin, loginer_type, 
+    registration
+  </sql>
+  <select id="selectByExample" parameterType="com.yb.team.project.model.UserTableExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_table
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_table
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yb.team.project.model.UserTableExample">
+    delete from user_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yb.team.project.model.UserTable">
+    insert into user_table (login_id, account, password, 
+      email, phone_number, license_key, 
+      is_admin, loginer_type, registration
+      )
+    values (#{loginId,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=INTEGER}, #{licenseKey,jdbcType=VARCHAR}, 
+      #{isAdmin,jdbcType=BIT}, #{loginerType,jdbcType=BIT}, #{registration,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yb.team.project.model.UserTable">
+    insert into user_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
+        login_id,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="licenseKey != null">
+        license_key,
+      </if>
+      <if test="isAdmin != null">
+        is_admin,
+      </if>
+      <if test="loginerType != null">
+        loginer_type,
+      </if>
+      <if test="registration != null">
+        registration,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
+        #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="licenseKey != null">
+        #{licenseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        #{isAdmin,jdbcType=BIT},
+      </if>
+      <if test="loginerType != null">
+        #{loginerType,jdbcType=BIT},
+      </if>
+      <if test="registration != null">
+        #{registration,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yb.team.project.model.UserTableExample" resultType="java.lang.Integer">
+    select count(*) from user_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update user_table
+    <set>
+      <if test="record.loginId != null">
+        login_id = #{record.loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account != null">
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneNumber != null">
+        phone_number = #{record.phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.licenseKey != null">
+        license_key = #{record.licenseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isAdmin != null">
+        is_admin = #{record.isAdmin,jdbcType=BIT},
+      </if>
+      <if test="record.loginerType != null">
+        loginer_type = #{record.loginerType,jdbcType=BIT},
+      </if>
+      <if test="record.registration != null">
+        registration = #{record.registration,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update user_table
+    set login_id = #{record.loginId,jdbcType=VARCHAR},
+      account = #{record.account,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      phone_number = #{record.phoneNumber,jdbcType=INTEGER},
+      license_key = #{record.licenseKey,jdbcType=VARCHAR},
+      is_admin = #{record.isAdmin,jdbcType=BIT},
+      loginer_type = #{record.loginerType,jdbcType=BIT},
+      registration = #{record.registration,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yb.team.project.model.UserTable">
+    update user_table
+    <set>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="licenseKey != null">
+        license_key = #{licenseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        is_admin = #{isAdmin,jdbcType=BIT},
+      </if>
+      <if test="loginerType != null">
+        loginer_type = #{loginerType,jdbcType=BIT},
+      </if>
+      <if test="registration != null">
+        registration = #{registration,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yb.team.project.model.UserTable">
+    update user_table
+    set account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=INTEGER},
+      license_key = #{licenseKey,jdbcType=VARCHAR},
+      is_admin = #{isAdmin,jdbcType=BIT},
+      loginer_type = #{loginerType,jdbcType=BIT},
+      registration = #{registration,jdbcType=VARCHAR}
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yb.team.project.model.UserTable">
+    <id column="login_id" jdbcType="VARCHAR" property="loginId" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone_number" jdbcType="INTEGER" property="phoneNumber" />
+    <result column="license_key" jdbcType="VARCHAR" property="licenseKey" />
+    <result column="is_admin" jdbcType="BIT" property="isAdmin" />
+    <result column="loginer_type" jdbcType="BIT" property="loginerType" />
+    <result column="registration" jdbcType="VARCHAR" property="registration" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    login_id, account, password, email, phone_number, license_key, is_admin, loginer_type, 
+    registration
+  </sql>
+  <select id="selectByExample" parameterType="com.yb.team.project.model.UserTableExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_table
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_table
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yb.team.project.model.UserTableExample">
+    delete from user_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yb.team.project.model.UserTable">
+    insert into user_table (login_id, account, password, 
+      email, phone_number, license_key, 
+      is_admin, loginer_type, registration
+      )
+    values (#{loginId,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=INTEGER}, #{licenseKey,jdbcType=VARCHAR}, 
+      #{isAdmin,jdbcType=BIT}, #{loginerType,jdbcType=BIT}, #{registration,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yb.team.project.model.UserTable">
+    insert into user_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
+        login_id,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="licenseKey != null">
+        license_key,
+      </if>
+      <if test="isAdmin != null">
+        is_admin,
+      </if>
+      <if test="loginerType != null">
+        loginer_type,
+      </if>
+      <if test="registration != null">
+        registration,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
+        #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="licenseKey != null">
+        #{licenseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        #{isAdmin,jdbcType=BIT},
+      </if>
+      <if test="loginerType != null">
+        #{loginerType,jdbcType=BIT},
+      </if>
+      <if test="registration != null">
+        #{registration,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yb.team.project.model.UserTableExample" resultType="java.lang.Integer">
+    select count(*) from user_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update user_table
+    <set>
+      <if test="record.loginId != null">
+        login_id = #{record.loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account != null">
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneNumber != null">
+        phone_number = #{record.phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.licenseKey != null">
+        license_key = #{record.licenseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isAdmin != null">
+        is_admin = #{record.isAdmin,jdbcType=BIT},
+      </if>
+      <if test="record.loginerType != null">
+        loginer_type = #{record.loginerType,jdbcType=BIT},
+      </if>
+      <if test="record.registration != null">
+        registration = #{record.registration,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update user_table
+    set login_id = #{record.loginId,jdbcType=VARCHAR},
+      account = #{record.account,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      phone_number = #{record.phoneNumber,jdbcType=INTEGER},
+      license_key = #{record.licenseKey,jdbcType=VARCHAR},
+      is_admin = #{record.isAdmin,jdbcType=BIT},
+      loginer_type = #{record.loginerType,jdbcType=BIT},
+      registration = #{record.registration,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yb.team.project.model.UserTable">
+    update user_table
+    <set>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="licenseKey != null">
+        license_key = #{licenseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        is_admin = #{isAdmin,jdbcType=BIT},
+      </if>
+      <if test="loginerType != null">
+        loginer_type = #{loginerType,jdbcType=BIT},
+      </if>
+      <if test="registration != null">
+        registration = #{registration,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yb.team.project.model.UserTable">
+    update user_table
+    set account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=INTEGER},
+      license_key = #{licenseKey,jdbcType=VARCHAR},
+      is_admin = #{isAdmin,jdbcType=BIT},
+      loginer_type = #{loginerType,jdbcType=BIT},
+      registration = #{registration,jdbcType=VARCHAR}
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yb.team.project.model.UserTable">
+    <id column="login_id" jdbcType="VARCHAR" property="loginId" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone_number" jdbcType="INTEGER" property="phoneNumber" />
+    <result column="license_key" jdbcType="VARCHAR" property="licenseKey" />
+    <result column="is_admin" jdbcType="BIT" property="isAdmin" />
+    <result column="loginer_type" jdbcType="BIT" property="loginerType" />
+    <result column="registration" jdbcType="VARCHAR" property="registration" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    login_id, account, password, email, phone_number, license_key, is_admin, loginer_type, 
+    registration
+  </sql>
+  <select id="selectByExample" parameterType="com.yb.team.project.model.UserTableExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_table
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_table
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yb.team.project.model.UserTableExample">
+    delete from user_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yb.team.project.model.UserTable">
+    insert into user_table (login_id, account, password, 
+      email, phone_number, license_key, 
+      is_admin, loginer_type, registration
+      )
+    values (#{loginId,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=INTEGER}, #{licenseKey,jdbcType=VARCHAR}, 
+      #{isAdmin,jdbcType=BIT}, #{loginerType,jdbcType=BIT}, #{registration,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yb.team.project.model.UserTable">
+    insert into user_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
+        login_id,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="licenseKey != null">
+        license_key,
+      </if>
+      <if test="isAdmin != null">
+        is_admin,
+      </if>
+      <if test="loginerType != null">
+        loginer_type,
+      </if>
+      <if test="registration != null">
+        registration,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
+        #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="licenseKey != null">
+        #{licenseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        #{isAdmin,jdbcType=BIT},
+      </if>
+      <if test="loginerType != null">
+        #{loginerType,jdbcType=BIT},
+      </if>
+      <if test="registration != null">
+        #{registration,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yb.team.project.model.UserTableExample" resultType="java.lang.Integer">
+    select count(*) from user_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update user_table
+    <set>
+      <if test="record.loginId != null">
+        login_id = #{record.loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account != null">
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneNumber != null">
+        phone_number = #{record.phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.licenseKey != null">
+        license_key = #{record.licenseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isAdmin != null">
+        is_admin = #{record.isAdmin,jdbcType=BIT},
+      </if>
+      <if test="record.loginerType != null">
+        loginer_type = #{record.loginerType,jdbcType=BIT},
+      </if>
+      <if test="record.registration != null">
+        registration = #{record.registration,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update user_table
+    set login_id = #{record.loginId,jdbcType=VARCHAR},
+      account = #{record.account,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      phone_number = #{record.phoneNumber,jdbcType=INTEGER},
+      license_key = #{record.licenseKey,jdbcType=VARCHAR},
+      is_admin = #{record.isAdmin,jdbcType=BIT},
+      loginer_type = #{record.loginerType,jdbcType=BIT},
+      registration = #{record.registration,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yb.team.project.model.UserTable">
+    update user_table
+    <set>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="licenseKey != null">
+        license_key = #{licenseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        is_admin = #{isAdmin,jdbcType=BIT},
+      </if>
+      <if test="loginerType != null">
+        loginer_type = #{loginerType,jdbcType=BIT},
+      </if>
+      <if test="registration != null">
+        registration = #{registration,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yb.team.project.model.UserTable">
+    update user_table
+    set account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=INTEGER},
+      license_key = #{licenseKey,jdbcType=VARCHAR},
+      is_admin = #{isAdmin,jdbcType=BIT},
+      loginer_type = #{loginerType,jdbcType=BIT},
+      registration = #{registration,jdbcType=VARCHAR}
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yb.team.project.model.UserTable">
+    <id column="login_id" jdbcType="VARCHAR" property="loginId" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone_number" jdbcType="INTEGER" property="phoneNumber" />
+    <result column="license_key" jdbcType="VARCHAR" property="licenseKey" />
+    <result column="is_admin" jdbcType="BIT" property="isAdmin" />
+    <result column="loginer_type" jdbcType="BIT" property="loginerType" />
+    <result column="registration" jdbcType="VARCHAR" property="registration" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    login_id, account, password, email, phone_number, license_key, is_admin, loginer_type, 
+    registration
+  </sql>
+  <select id="selectByExample" parameterType="com.yb.team.project.model.UserTableExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_table
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_table
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yb.team.project.model.UserTableExample">
+    delete from user_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yb.team.project.model.UserTable">
+    insert into user_table (login_id, account, password, 
+      email, phone_number, license_key, 
+      is_admin, loginer_type, registration
+      )
+    values (#{loginId,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=INTEGER}, #{licenseKey,jdbcType=VARCHAR}, 
+      #{isAdmin,jdbcType=BIT}, #{loginerType,jdbcType=BIT}, #{registration,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yb.team.project.model.UserTable">
+    insert into user_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
+        login_id,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="licenseKey != null">
+        license_key,
+      </if>
+      <if test="isAdmin != null">
+        is_admin,
+      </if>
+      <if test="loginerType != null">
+        loginer_type,
+      </if>
+      <if test="registration != null">
+        registration,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="loginId != null">
+        #{loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="licenseKey != null">
+        #{licenseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        #{isAdmin,jdbcType=BIT},
+      </if>
+      <if test="loginerType != null">
+        #{loginerType,jdbcType=BIT},
+      </if>
+      <if test="registration != null">
+        #{registration,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yb.team.project.model.UserTableExample" resultType="java.lang.Integer">
+    select count(*) from user_table
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update user_table
+    <set>
+      <if test="record.loginId != null">
+        login_id = #{record.loginId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account != null">
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneNumber != null">
+        phone_number = #{record.phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.licenseKey != null">
+        license_key = #{record.licenseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isAdmin != null">
+        is_admin = #{record.isAdmin,jdbcType=BIT},
+      </if>
+      <if test="record.loginerType != null">
+        loginer_type = #{record.loginerType,jdbcType=BIT},
+      </if>
+      <if test="record.registration != null">
+        registration = #{record.registration,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update user_table
+    set login_id = #{record.loginId,jdbcType=VARCHAR},
+      account = #{record.account,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      phone_number = #{record.phoneNumber,jdbcType=INTEGER},
+      license_key = #{record.licenseKey,jdbcType=VARCHAR},
+      is_admin = #{record.isAdmin,jdbcType=BIT},
+      loginer_type = #{record.loginerType,jdbcType=BIT},
+      registration = #{record.registration,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yb.team.project.model.UserTable">
+    update user_table
+    <set>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="licenseKey != null">
+        license_key = #{licenseKey,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        is_admin = #{isAdmin,jdbcType=BIT},
+      </if>
+      <if test="loginerType != null">
+        loginer_type = #{loginerType,jdbcType=BIT},
+      </if>
+      <if test="registration != null">
+        registration = #{registration,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where login_id = #{loginId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yb.team.project.model.UserTable">
     update user_table
     set account = #{account,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

@@ -49,10 +49,15 @@
         </javaClientGenerator>
         <!-- 指定数据库表 -->
         <table schema="" tableName="device_table"></table>
-        <table schema="" tableName="management"></table>
+
+        <table schema="" tableName="Management"></table>
+
         <table schema="" tableName="meetdev_table"></table>
-        <table schema="" tableName="pre_time"></table>
-        <table schema="" tableName="predestine"></table>
+
+        <table schema="" tableName="Pre_time"></table>
+
         <table schema="" tableName="user_table"></table>
+
+        <table schema="" tableName="Predestine"></table>
     </context>
 </generatorConfiguration>

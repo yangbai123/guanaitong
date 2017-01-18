@@ -7,67 +7,67 @@ public class PreTime {
 
     private Integer meetingRoomid;
 
-    private Boolean 8.00;
+    private Boolean eight;
 
-    private Boolean 8.30;
+    private Boolean eightThirty;
 
-    private Boolean 9.00;
+    private Boolean nine;
 
-    private Boolean 9.30;
+    private Boolean nineThirty;
 
-    private Boolean 10.00;
+    private Boolean ten;
 
-    private Boolean 10.30;
+    private Boolean tenThirty;
 
-    private Boolean 11.00;
+    private Boolean eleven;
 
-    private Boolean 11.30;
+    private Boolean elevenThirty;
 
-    private Boolean 12.00;
+    private Boolean twelve;
 
-    private Boolean 12.30;
+    private Boolean twelveThirty;
 
-    private Boolean 13.00;
+    private Boolean thirteen;
 
-    private Boolean 13.30;
+    private Boolean thirteenThirty;
 
-    private Boolean 14.00;
+    private Boolean fourteen;
 
-    private Boolean 14.30;
+    private Boolean fourteenThirty;
 
-    private Boolean 15.00;
+    private Boolean fifteen;
 
-    private Boolean 15.30;
+    private Boolean fifteenThirty;
 
-    private Boolean 16.00;
+    private Boolean sixteen;
 
-    private Boolean 16.30;
+    private Boolean sixteenThirty;
 
-    private Boolean 17.00;
+    private Boolean seventeen;
 
-    private Boolean 17.30;
+    private Boolean seventeenThirty;
 
-    private Boolean 18.00;
+    private Boolean eighteen;
 
-    private Boolean 18.30;
+    private Boolean eighteenThirty;
 
-    private Boolean 19.00;
+    private Boolean ninteen;
 
-    private Boolean 19.30;
+    private Boolean ninteenThirty;
 
-    private Boolean 20.00;
+    private Boolean twenty;
 
-    private Boolean 20.30;
+    private Boolean twentyThirty;
 
-    private Boolean 21.00;
+    private Boolean twentyone;
 
-    private Boolean 21.30;
+    private Boolean twentyoneThirty;
 
-    private Boolean 22.00;
+    private Boolean twentytwo;
 
-    private Boolean 22.30;
+    private Boolean twentytwoThirty;
 
-    private Boolean 23.00;
+    private Boolean twentythree;
 
     private Date bookdata;
 
@@ -87,252 +87,252 @@ public class PreTime {
         this.meetingRoomid = meetingRoomid;
     }
 
-    public Boolean get8.00() {
-        return 8.00;
+    public Boolean getEight() {
+        return eight;
     }
 
-    public void set8.00(Boolean 8.00) {
-        this.8.00 = 8.00;
+    public void setEight(Boolean eight) {
+        this.eight = eight;
     }
 
-    public Boolean get8.30() {
-        return 8.30;
+    public Boolean getEightThirty() {
+        return eightThirty;
     }
 
-    public void set8.30(Boolean 8.30) {
-        this.8.30 = 8.30;
+    public void setEightThirty(Boolean eightThirty) {
+        this.eightThirty = eightThirty;
     }
 
-    public Boolean get9.00() {
-        return 9.00;
+    public Boolean getNine() {
+        return nine;
     }
 
-    public void set9.00(Boolean 9.00) {
-        this.9.00 = 9.00;
+    public void setNine(Boolean nine) {
+        this.nine = nine;
     }
 
-    public Boolean get9.30() {
-        return 9.30;
+    public Boolean getNineThirty() {
+        return nineThirty;
     }
 
-    public void set9.30(Boolean 9.30) {
-        this.9.30 = 9.30;
+    public void setNineThirty(Boolean nineThirty) {
+        this.nineThirty = nineThirty;
     }
 
-    public Boolean get10.00() {
-        return 10.00;
+    public Boolean getTen() {
+        return ten;
     }
 
-    public void set10.00(Boolean 10.00) {
-        this.10.00 = 10.00;
+    public void setTen(Boolean ten) {
+        this.ten = ten;
     }
 
-    public Boolean get10.30() {
-        return 10.30;
+    public Boolean getTenThirty() {
+        return tenThirty;
     }
 
-    public void set10.30(Boolean 10.30) {
-        this.10.30 = 10.30;
+    public void setTenThirty(Boolean tenThirty) {
+        this.tenThirty = tenThirty;
     }
 
-    public Boolean get11.00() {
-        return 11.00;
+    public Boolean getEleven() {
+        return eleven;
     }
 
-    public void set11.00(Boolean 11.00) {
-        this.11.00 = 11.00;
+    public void setEleven(Boolean eleven) {
+        this.eleven = eleven;
     }
 
-    public Boolean get11.30() {
-        return 11.30;
+    public Boolean getElevenThirty() {
+        return elevenThirty;
     }
 
-    public void set11.30(Boolean 11.30) {
-        this.11.30 = 11.30;
+    public void setElevenThirty(Boolean elevenThirty) {
+        this.elevenThirty = elevenThirty;
     }
 
-    public Boolean get12.00() {
-        return 12.00;
+    public Boolean getTwelve() {
+        return twelve;
     }
 
-    public void set12.00(Boolean 12.00) {
-        this.12.00 = 12.00;
+    public void setTwelve(Boolean twelve) {
+        this.twelve = twelve;
     }
 
-    public Boolean get12.30() {
-        return 12.30;
+    public Boolean getTwelveThirty() {
+        return twelveThirty;
     }
 
-    public void set12.30(Boolean 12.30) {
-        this.12.30 = 12.30;
+    public void setTwelveThirty(Boolean twelveThirty) {
+        this.twelveThirty = twelveThirty;
     }
 
-    public Boolean get13.00() {
-        return 13.00;
+    public Boolean getThirteen() {
+        return thirteen;
     }
 
-    public void set13.00(Boolean 13.00) {
-        this.13.00 = 13.00;
+    public void setThirteen(Boolean thirteen) {
+        this.thirteen = thirteen;
     }
 
-    public Boolean get13.30() {
-        return 13.30;
+    public Boolean getThirteenThirty() {
+        return thirteenThirty;
     }
 
-    public void set13.30(Boolean 13.30) {
-        this.13.30 = 13.30;
+    public void setThirteenThirty(Boolean thirteenThirty) {
+        this.thirteenThirty = thirteenThirty;
     }
 
-    public Boolean get14.00() {
-        return 14.00;
+    public Boolean getFourteen() {
+        return fourteen;
     }
 
-    public void set14.00(Boolean 14.00) {
-        this.14.00 = 14.00;
+    public void setFourteen(Boolean fourteen) {
+        this.fourteen = fourteen;
     }
 
-    public Boolean get14.30() {
-        return 14.30;
+    public Boolean getFourteenThirty() {
+        return fourteenThirty;
     }
 
-    public void set14.30(Boolean 14.30) {
-        this.14.30 = 14.30;
+    public void setFourteenThirty(Boolean fourteenThirty) {
+        this.fourteenThirty = fourteenThirty;
     }
 
-    public Boolean get15.00() {
-        return 15.00;
+    public Boolean getFifteen() {
+        return fifteen;
     }
 
-    public void set15.00(Boolean 15.00) {
-        this.15.00 = 15.00;
+    public void setFifteen(Boolean fifteen) {
+        this.fifteen = fifteen;
     }
 
-    public Boolean get15.30() {
-        return 15.30;
+    public Boolean getFifteenThirty() {
+        return fifteenThirty;
     }
 
-    public void set15.30(Boolean 15.30) {
-        this.15.30 = 15.30;
+    public void setFifteenThirty(Boolean fifteenThirty) {
+        this.fifteenThirty = fifteenThirty;
     }
 
-    public Boolean get16.00() {
-        return 16.00;
+    public Boolean getSixteen() {
+        return sixteen;
     }
 
-    public void set16.00(Boolean 16.00) {
-        this.16.00 = 16.00;
+    public void setSixteen(Boolean sixteen) {
+        this.sixteen = sixteen;
     }
 
-    public Boolean get16.30() {
-        return 16.30;
+    public Boolean getSixteenThirty() {
+        return sixteenThirty;
     }
 
-    public void set16.30(Boolean 16.30) {
-        this.16.30 = 16.30;
+    public void setSixteenThirty(Boolean sixteenThirty) {
+        this.sixteenThirty = sixteenThirty;
     }
 
-    public Boolean get17.00() {
-        return 17.00;
+    public Boolean getSeventeen() {
+        return seventeen;
     }
 
-    public void set17.00(Boolean 17.00) {
-        this.17.00 = 17.00;
+    public void setSeventeen(Boolean seventeen) {
+        this.seventeen = seventeen;
     }
 
-    public Boolean get17.30() {
-        return 17.30;
+    public Boolean getSeventeenThirty() {
+        return seventeenThirty;
     }
 
-    public void set17.30(Boolean 17.30) {
-        this.17.30 = 17.30;
+    public void setSeventeenThirty(Boolean seventeenThirty) {
+        this.seventeenThirty = seventeenThirty;
     }
 
-    public Boolean get18.00() {
-        return 18.00;
+    public Boolean getEighteen() {
+        return eighteen;
     }
 
-    public void set18.00(Boolean 18.00) {
-        this.18.00 = 18.00;
+    public void setEighteen(Boolean eighteen) {
+        this.eighteen = eighteen;
     }
 
-    public Boolean get18.30() {
-        return 18.30;
+    public Boolean getEighteenThirty() {
+        return eighteenThirty;
     }
 
-    public void set18.30(Boolean 18.30) {
-        this.18.30 = 18.30;
+    public void setEighteenThirty(Boolean eighteenThirty) {
+        this.eighteenThirty = eighteenThirty;
     }
 
-    public Boolean get19.00() {
-        return 19.00;
+    public Boolean getNinteen() {
+        return ninteen;
     }
 
-    public void set19.00(Boolean 19.00) {
-        this.19.00 = 19.00;
+    public void setNinteen(Boolean ninteen) {
+        this.ninteen = ninteen;
     }
 
-    public Boolean get19.30() {
-        return 19.30;
+    public Boolean getNinteenThirty() {
+        return ninteenThirty;
     }
 
-    public void set19.30(Boolean 19.30) {
-        this.19.30 = 19.30;
+    public void setNinteenThirty(Boolean ninteenThirty) {
+        this.ninteenThirty = ninteenThirty;
     }
 
-    public Boolean get20.00() {
-        return 20.00;
+    public Boolean getTwenty() {
+        return twenty;
     }
 
-    public void set20.00(Boolean 20.00) {
-        this.20.00 = 20.00;
+    public void setTwenty(Boolean twenty) {
+        this.twenty = twenty;
     }
 
-    public Boolean get20.30() {
-        return 20.30;
+    public Boolean getTwentyThirty() {
+        return twentyThirty;
     }
 
-    public void set20.30(Boolean 20.30) {
-        this.20.30 = 20.30;
+    public void setTwentyThirty(Boolean twentyThirty) {
+        this.twentyThirty = twentyThirty;
     }
 
-    public Boolean get21.00() {
-        return 21.00;
+    public Boolean getTwentyone() {
+        return twentyone;
     }
 
-    public void set21.00(Boolean 21.00) {
-        this.21.00 = 21.00;
+    public void setTwentyone(Boolean twentyone) {
+        this.twentyone = twentyone;
     }
 
-    public Boolean get21.30() {
-        return 21.30;
+    public Boolean getTwentyoneThirty() {
+        return twentyoneThirty;
     }
 
-    public void set21.30(Boolean 21.30) {
-        this.21.30 = 21.30;
+    public void setTwentyoneThirty(Boolean twentyoneThirty) {
+        this.twentyoneThirty = twentyoneThirty;
     }
 
-    public Boolean get22.00() {
-        return 22.00;
+    public Boolean getTwentytwo() {
+        return twentytwo;
     }
 
-    public void set22.00(Boolean 22.00) {
-        this.22.00 = 22.00;
+    public void setTwentytwo(Boolean twentytwo) {
+        this.twentytwo = twentytwo;
     }
 
-    public Boolean get22.30() {
-        return 22.30;
+    public Boolean getTwentytwoThirty() {
+        return twentytwoThirty;
     }
 
-    public void set22.30(Boolean 22.30) {
-        this.22.30 = 22.30;
+    public void setTwentytwoThirty(Boolean twentytwoThirty) {
+        this.twentytwoThirty = twentytwoThirty;
     }
 
-    public Boolean get23.00() {
-        return 23.00;
+    public Boolean getTwentythree() {
+        return twentythree;
     }
 
-    public void set23.00(Boolean 23.00) {
-        this.23.00 = 23.00;
+    public void setTwentythree(Boolean twentythree) {
+        this.twentythree = twentythree;
     }
 
     public Date getBookdata() {

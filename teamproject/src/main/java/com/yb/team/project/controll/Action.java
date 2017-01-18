@@ -14,10 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class Action {
     @RequestMapping(value="hello")
-    public ModelAndView printWelcome(HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView mav= new ModelAndView();
-        mav.addObject("city","test");
-        mav.setViewName("hello");
-        return mav;
+    public String printWelcome(HttpServletRequest request) {
+
+        return "hello";
     }
 }
