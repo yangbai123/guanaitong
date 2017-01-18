@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 1
-Source Server Version : 50173
-Source Host           : 192.168.1.126:3306
+Source Server Version : 50717
+Source Host           : localhost:3306
 Source Database       : meeting_room
 
 Target Server Type    : MYSQL
-Target Server Version : 50173
+Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-01-17 16:25:48
+Date: 2017-01-18 19:05:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,10 +30,10 @@ CREATE TABLE `device_table` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for Management
+-- Table structure for management
 -- ----------------------------
-DROP TABLE IF EXISTS `Management`;
-CREATE TABLE `Management` (
+DROP TABLE IF EXISTS `management`;
+CREATE TABLE `management` (
   `meeting_roomid` int(48) NOT NULL AUTO_INCREMENT,
   `meeting_room` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `create_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
@@ -41,12 +41,11 @@ CREATE TABLE `Management` (
   `nums_min` int(3) DEFAULT NULL,
   `projector` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `visible` tinyint(1) DEFAULT NULL,
-  `device` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`meeting_roomid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
--- Records of Management
+-- Records of management
 -- ----------------------------
 
 -- ----------------------------
@@ -65,10 +64,29 @@ CREATE TABLE `meetdev_table` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for Pre_time
+-- Table structure for predestine
 -- ----------------------------
-DROP TABLE IF EXISTS `Pre_time`;
-CREATE TABLE `Pre_time` (
+DROP TABLE IF EXISTS `predestine`;
+CREATE TABLE `predestine` (
+  `meeting_id` int(48) NOT NULL AUTO_INCREMENT,
+  `meeting_theme` varchar(255) COLLATE utf8_bin NOT NULL,
+  `end_time` datetime NOT NULL,
+  `start_time` datetime NOT NULL,
+  `meeting_roomid` int(11) NOT NULL,
+  `booker` varchar(255) COLLATE utf8_bin NOT NULL,
+  `status` varchar(10) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`meeting_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- ----------------------------
+-- Records of predestine
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for pre_time
+-- ----------------------------
+DROP TABLE IF EXISTS `pre_time`;
+CREATE TABLE `pre_time` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `meeting_roomid` int(48) NOT NULL,
   `eight` tinyint(1) NOT NULL,
@@ -107,25 +125,7 @@ CREATE TABLE `Pre_time` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
--- Records of Pre_time
--- ----------------------------
-
--- ----------------------------
--- Table structure for Predestine
--- ----------------------------
-DROP TABLE IF EXISTS `Predestine`;
-CREATE TABLE `Predestine` (
-  `meeting_id` int(48) NOT NULL AUTO_INCREMENT,
-  `meeting_theme` varchar(255) COLLATE utf8_bin NOT NULL,
-  `end_time` datetime NOT NULL,
-  `start_time` datetime NOT NULL,
-  `meeting_roomid` int(11) NOT NULL,
-  `booker` varchar(255) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`meeting_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ----------------------------
--- Records of Predestine
+-- Records of pre_time
 -- ----------------------------
 
 -- ----------------------------
