@@ -16,7 +16,10 @@
 
     <context:property-placeholder location="classpath:jdbc.properties"/>
     <context:annotation-config/>
-    <context:component-scan base-package="com.yb.team.project.dao"/>
+    <!--<context:component-scan base-package="com.yb.team.project.service"/>-->
+    <!--<context:component-scan base-package="com.yb.team.project.dao"/>-->
+    <context:component-scan base-package="com.yb.team.project.*"/>
+    <!--<mvc:annotation-driven/>-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${c3p0.driverClass}"/>
         <property name="jdbcUrl" value="${c3p0.url}"/>
@@ -27,20 +30,20 @@
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="configLocation" value="classpath:Mybatis-config.xml"/>
+        <!--<property name="configLocation" value="classpath:Mybatis-config.xml"/>-->
         <property name="dataSource" ref="dataSource"/>
-        <property name="typeAliasesPackage" value="com.yb.team.project.beans"/>
+        <property name="typeAliasesPackage" value="com.yb.team.project.model"/>
         <property name="mapperLocations" value="classpath:mybatis/*"/>
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.yb.team.project.*"/>
+        <property name="basePackage" value="com.yb.team.project.**"/>
         <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
     </bean>
 
     <!--&lt;!&ndash;模板信息配置&ndash;&gt;-->
     <!--<bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">-->
         <!--<property name="resourceLoaderPath" value="/WEB-INF/velocity/" />&lt;!&ndash; 模板存放的路径 &ndash;&gt;-->
-        <!--<property name="configLocation" value="classpath:velocity.properties"/>-->
+         <!--<property name="configLocation" value="classpath:velocity.properties"/>-->
     <!--</bean>-->
     <!--&lt;!&ndash; 配置视图的显示 &ndash;&gt;-->
     <!--<bean id="ViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">-->

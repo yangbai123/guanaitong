@@ -15,6 +15,8 @@ public class Predestine {
 
     private String booker;
 
+    private String status;
+
     public Integer getMeetingId() {
         return meetingId;
     }
@@ -61,5 +63,13 @@ public class Predestine {
 
     public void setBooker(String booker) {
         this.booker = booker == null ? null : booker.trim();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
     }
 }

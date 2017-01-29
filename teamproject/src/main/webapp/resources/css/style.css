@@ -60,7 +60,7 @@
 
 .m-tab1-hd .item{float: left;height:62px;width: 178px;padding-left: 30px;text-align: center;line-height: 62px;border-top:2px #E7E7E7 solid;background-color: #E7E7E7;color:#666;font-size:24px;text-decoration: none;position: relative;}
 .m-tab1-hd .item.active{border-top-color:#f60;background-color: #fff;color:#f60;}
-.m-tab1-hd .icon{display:inline-block;width:24px;height:30px;overflow:hidden;background: url(../img/tab-icon.png) no-repeat;position: absolute;top:50%;margin-top: -15px;left:40px;}
+.m-tab1-hd .icon{display:inline-block;width:24px;height:30px;overflow:hidden;background: url(../../../resources/img/tab-icon.png) no-repeat;position: absolute;top:50%;margin-top: -15px;left:40px;}
 .m-tab1-hd .icon-personal{background-position: 0 0;}
 .m-tab1-hd .icon-company{background-position: -24px 0;}
 .m-tab1-hd .item.active .icon-personal{background-position: 0 -30px;}
@@ -69,7 +69,7 @@
 .m-tab2-hd {border-bottom:1px #E5E5E5 solid;height: 36px; text-align: center;}
 .m-tab2-hd .item{display:inline-block;height:34px;width: 80px;text-align: center;line-height: 34px;margin-left: 50px;margin-right: 50px;border-bottom:2px #fff solid;color:#333;font-size:20px;text-decoration: none;position: relative;}
 .m-tab2-hd .item.active{border-bottom-color:#f60;}
-.m-tab2-hd .icon{display:inline-block;width:24px;height:30px;overflow:hidden;background: url(../img/tab-icon.png) no-repeat;position: absolute;top:50%;margin-top: -15px;left:40px;}
+.m-tab2-hd .icon{display:inline-block;width:24px;height:30px;overflow:hidden;background: url(../../../resources/img/tab-icon.png) no-repeat;position: absolute;top:50%;margin-top: -15px;left:40px;}
 .m-tab1-hd .icon-personal{background-position: 0 0;}
 .m-tab1-hd .icon-company{background-position: -24px 0;}
 .m-tab1-hd .item.active .icon-personal{background-position: 0 -30px;}
@@ -81,7 +81,7 @@
 
 /*会议室预定*/
 .icon-date{display:inline-block;height:22px;width: 22px;overflow: hidden;background:url(../img/icon-date.png) no-repeat center;}
-.icon-instructions{display:inline-block;height:16px;width: 16px;overflow: hidden;background:url(../img/icon-instructions.png) no-repeat center;}
+.icon-instructions{display:inline-block;height:16px;width: 16px;overflow: hidden;background:url(../../../resources/img/icon-instructions.png) no-repeat center;}
 
 .metting-reservation-hd{border:1px #efefef solid;padding:12px;height:38px;line-height: 38px;position: relative;z-index:2;}
 .metting-reservation-hd .u-btn{position: absolute;right:12px;top:12px;}

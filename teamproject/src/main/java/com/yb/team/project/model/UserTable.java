@@ -7,9 +7,17 @@ public class UserTable {
 
     private String password;
 
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
+
     private String email;
 
-    private Integer phoneNumber;
+    private long phoneNumber;
 
     private String licenseKey;
 
@@ -51,11 +59,11 @@ public class UserTable {
         this.email = email == null ? null : email.trim();
     }
 
-    public Integer getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Integer phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

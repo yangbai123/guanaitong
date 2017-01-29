@@ -68,7 +68,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholde,input::-webkit-input-
 .u-radio, .u-checkbox{position: relative; font-size: 14px; min-height: 20px; line-height: 20px; color: #666; display: inline-block; cursor: pointer; padding-left: 22px;}
 .u-radio.disabled, .u-checkbox.disabled,.disabled .u-radio, .disabled .u-checkbox{color: #ccc;}
 .u-radio>input, .u-checkbox>input{position: absolute; left: -99999px; top: 0;}
-.u-radio .ico,.u-checkbox .ico{position: absolute; left:0; top: 2px; width: 16px; height: 16px; background: url(../img/icon-check.png);}
+.u-radio .ico,.u-checkbox .ico{position: absolute; left:0; top: 2px; width: 16px; height: 16px; background: url(../../../resources/img/icon-check.png);}
 .u-radio .ico{background-position: 0 0;}
 .u-checkbox .ico{background-position: 0 -16px;}
 .u-radio.checked .ico,.checked .u-radio .ico{background-position: -16px 0;}
@@ -206,7 +206,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholde,input::-webkit-input-
 
 /* page */
 .m-page{float: right; margin-right: 1px; }
-.m-page .prev i,.m-page .next i,.m-page .first i,.m-page .last i{display: inline-block; background: url(../img/icon-page.png) no-repeat;font-size: 0; overflow: hidden; height: 11px;}
+.m-page .prev i,.m-page .next i,.m-page .first i,.m-page .last i{display: inline-block; background: url(../../../resources/img/icon-page.png) no-repeat;font-size: 0; overflow: hidden; height: 11px;}
 .m-page .prev i,.m-page .next i{width:8px; position: relative;}
 .m-page .prev i{background-position: right 0; margin-right: 2px;}
 .m-page .next i{background-position: right -11px; margin-left: 2px;}

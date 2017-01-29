@@ -4,7 +4,10 @@ import com.yb.team.project.model.DeviceTable;
 import com.yb.team.project.model.DeviceTableExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface DeviceTableMapper {
     int countByExample(DeviceTableExample example);
 

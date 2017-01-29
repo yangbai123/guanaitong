@@ -2,10 +2,15 @@ package com.yb.team.project.dao;
 
 import com.yb.team.project.model.UserTable;
 import com.yb.team.project.model.UserTableExample;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public interface UserTableMapper {
+    UserTable getLoginByPhone(UserTable userTable);
     int countByExample(UserTableExample example);
 
     int deleteByExample(UserTableExample example);
@@ -27,4 +32,6 @@ public interface UserTableMapper {
     int updateByPrimaryKeySelective(UserTable record);
 
     int updateByPrimaryKey(UserTable record);
+
+
 }

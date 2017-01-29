@@ -17,8 +17,6 @@ public class Management {
 
     private Boolean visible;
 
-    private String device;
-
     public Integer getMeetingRoomid() {
         return meetingRoomid;
     }
@@ -73,13 +71,5 @@ public class Management {
 
     public void setVisible(Boolean visible) {
         this.visible = visible;
-    }
-
-    public String getDevice() {
-        return device;
-    }
-
-    public void setDevice(String device) {
-        this.device = device == null ? null : device.trim();
     }
 }

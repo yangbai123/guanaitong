@@ -4,7 +4,11 @@ import com.yb.team.project.model.PreTime;
 import com.yb.team.project.model.PreTimeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public interface PreTimeMapper {
     int countByExample(PreTimeExample example);
 

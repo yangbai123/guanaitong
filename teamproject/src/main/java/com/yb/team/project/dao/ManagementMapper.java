@@ -4,7 +4,11 @@ import com.yb.team.project.model.Management;
 import com.yb.team.project.model.ManagementExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public interface ManagementMapper {
     int countByExample(ManagementExample example);
 

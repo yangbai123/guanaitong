@@ -4,7 +4,11 @@ import com.yb.team.project.model.MeetdevTable;
 import com.yb.team.project.model.MeetdevTableExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public interface MeetdevTableMapper {
     int countByExample(MeetdevTableExample example);
 

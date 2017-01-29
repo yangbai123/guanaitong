@@ -1,4 +1,6 @@
-import com.yb.team.project.beans.Production;
+
+import com.yb.team.project.dao.UserTableMapper;
+import com.yb.team.project.model.UserTable;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -10,18 +12,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
 public class Test {
-//    @Autowired
-//    OpreateProduction opreateProduction;
-//    @org.junit.Test
-//    public void Opreate(){
-//        Production production = new Production();
-//        production.setProduction_name("banna");
-//        production.setProduction_nums(30);
-//        production.setProduction_price(300000);
-//        int insterNum = opreateProduction.insertProduction(production);
-//        System.out.println("成功修改"+insterNum+"行数据");
-//        int id = production.getProduction_id();
-//        System.out.println("主键ID为"+id);
-//    }
 
+    @Autowired
+    UserTableMapper userTableMapper;
+    @org.junit.Test
+    public void userTableTest(){
+        UserTable userTable = new UserTable();
+        userTable.setPhoneNumber(Long.parseLong("18945993676"));
+        userTable.setPassword("yangbai");
+        UserTable yangbai = userTableMapper.getLoginByPhone(userTable);
+        System.out.println(yangbai.getAccount()+yangbai.getEmail());
+    }
 }

@@ -4,7 +4,11 @@ import com.yb.team.project.model.Predestine;
 import com.yb.team.project.model.PredestineExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
 public interface PredestineMapper {
     int countByExample(PredestineExample example);
 
