@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CompanyManger {
     @RequestMapping(value = "/roommanger")
     public String mannger() {
-        return "/roommanger";
+        return "/company/roommanger";
     }
 
     @RequestMapping(value = "/companybookrecord")
     public String bookRecord() {
-        return "/companybookrecord";
+        return "/company/companybookrecord";
     }
 
     @RequestMapping(value = "/setting")
     public String setting() {
-        return "/setting";
+        return "/company/setting";
     }
 
 

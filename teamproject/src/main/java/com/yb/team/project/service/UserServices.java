@@ -15,8 +15,8 @@ public class UserServices {
     public UserTable getLoginByPhone(UserTable userTable){
         return userTableMapper.getLoginByPhone(userTable);
     }
-//    public UserTable getLoginByEmail(UserTable userTable){
-//        return userTableMapper.getLoginByEmail(userTable);
-//
-//    }
+    public UserTable getLoginByEmail(UserTable userTable){
+        return userTableMapper.getLoginByEmail(userTable);
+
+    }
 }

@@ -21,6 +21,27 @@ public class Test {
         userTable.setPhoneNumber(Long.parseLong("18945993676"));
         userTable.setPassword("yangbai");
         UserTable yangbai = userTableMapper.getLoginByPhone(userTable);
-        System.out.println(yangbai.getAccount()+yangbai.getEmail());
+        System.out.println(yangbai.getLoginId()+yangbai.getIsAdmin());
+    }
+    @org.junit.Test
+    public void userTableTest1(){
+        UserTable userTable = new UserTable();
+        userTable.setEmail("239123124@qq.com");
+        userTable.setPassword("yangbai");
+        UserTable yangbai = userTableMapper.getLoginByEmail(userTable);
+        System.out.println(yangbai.getLoginId()+yangbai.getIsAdmin());
+    }
+    @org.junit.Test
+    public void userTableTest2(){
+        UserTable userTable = new UserTable();
+        userTable.setAccount("laoshi");
+        userTable.setEmail("239123124@qq.com");
+        userTable.setPassword("yangbai");
+        userTable.setPhoneNumber(Long.parseLong("18945993672"));
+        userTable.setIsAdmin(true);
+        userTable.setLoginerType(true);
+        userTable.setRegistration("sdadsa");
+        userTable.setLicenseKey("asdas");
+        System.out.println(userTableMapper.personRegister(userTable));
     }
 }

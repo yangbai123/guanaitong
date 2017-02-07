@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserBook {
     @RequestMapping(value ="/roombook")
     public String roomBook(){
-        return "/roombook";
+        return "/person/roombook";
     }
     @RequestMapping(value = "/bookrecord")
     public String boolRecord(){
-        return  "/bookrecord";
+        return "/person/bookrecord";
     }
 }

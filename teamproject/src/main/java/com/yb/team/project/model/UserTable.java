@@ -7,14 +7,6 @@ public class UserTable {
 
     private String password;
 
-    public Boolean getAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
-    }
-
     private String email;
 
     private long phoneNumber;
@@ -98,4 +90,13 @@ public class UserTable {
     public void setRegistration(String registration) {
         this.registration = registration == null ? null : registration.trim();
     }
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
+
+
 }

@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Register {
     @RequestMapping(value = "/personregister")
     public String personRegister(){
-        return "/personregister";
+        return "/register/personregister";
     }
     @RequestMapping(value = "/companyregister")
     public String companyregister(){
-        return "/companyregister";
+        return "/register/companyregister";
     }
     @RequestMapping(value = "/registernext")
     public String registerNext() {
-        return "/registernext";
+        return "/register/registernext";
     }
     @RequestMapping(value = "/registersuccess")
     public String reisterSuccess(){
-        return "/registersuccess";
+        return "/register/registersuccess";
     }
 }
