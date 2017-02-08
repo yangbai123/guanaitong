@@ -4,14 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by Administrator on 2017/2/5.
+ * Created by Administrator on 2017/2/8.
  */
 @Controller
-public class Register {
-    @RequestMapping(value = "/personregister")
-    public String personRegister(){
-        return "/register/personregister";
-    }
+public class CompanyRegister {
     @RequestMapping(value = "/companyregister")
     public String companyregister(){
         return "/register/companyregister";
@@ -20,8 +16,8 @@ public class Register {
     public String registerNext() {
         return "/register/registernext";
     }
-    @RequestMapping(value = "/registersuccess")
+    @RequestMapping(value = "/companysuccess")
     public String reisterSuccess(){
-        return "/register/registersuccess";
+        return "/register/companysuccess";
     }
 }

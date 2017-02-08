@@ -17,6 +17,8 @@ public class UserServices {
     }
     public UserTable getLoginByEmail(UserTable userTable){
         return userTableMapper.getLoginByEmail(userTable);
-
+    }
+    public Boolean personRegister(UserTable userTable){
+        return userTableMapper.personRegister(userTable);
     }
 }

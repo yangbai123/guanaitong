@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yb.team.project.dao.ManagementMapper" >
+  <resultMap id="BaseResultMap" type="com.yb.team.project.model.Management" >
+    <id column="meeting_roomid" property="meetingRoomid" jdbcType="INTEGER" />
+    <result column="meeting_room" property="meetingRoom" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="nums_max" property="numsMax" jdbcType="INTEGER" />
+    <result column="nums_min" property="numsMin" jdbcType="INTEGER" />
+    <result column="projector" property="projector" jdbcType="VARCHAR" />
+    <result column="visible" property="visible" jdbcType="BIT" />
+  </resultMap>
+
+</mapper>
