@@ -24,6 +24,14 @@ function isNotEmpty(val) {
 	return !isEmpty(val);
 }
 
+/**
+ * 已存在 验证
+ * @param val
+ * @returns {Boolean}
+ */
+function isExist(val,name){
+
+}
 
 /**
  * 阻止事件冒泡
@@ -1148,6 +1156,11 @@ function is_email(str)
     return regExp.test(str);
 }
 /*array end*/
+function passwordLength(str)
+{
+	var regExp =/^[0-9a-zA-Z_]{6,15}$/;
+	return regExp.test(str);
+}
 
 
 function tz_animateIn(index){

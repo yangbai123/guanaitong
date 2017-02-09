@@ -12,10 +12,7 @@ public class CompanyRegister {
     public String companyregister(){
         return "/register/companyregister";
     }
-    @RequestMapping(value = "/registernext")
-    public String registerNext() {
-        return "/register/registernext";
-    }
+
     @RequestMapping(value = "/companysuccess")
     public String reisterSuccess(){
         return "/register/companysuccess";

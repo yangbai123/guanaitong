@@ -23,7 +23,8 @@
             license_key as licenseKey,
             is_admin as isAdmin,
             loginer_type as loginerType,
-            registration
+            registration,
+            company_name as companyName
             FROM user_table WHERE  phone_number= #{phoneNumber} AND password = #{password};
      </select>
     <select id="getLoginByEmail" parameterType="com.yb.team.project.model.UserTable" resultType="UserTable">
@@ -36,9 +37,53 @@
         license_key as licenseKey,
         is_admin as isAdmin,
         loginer_type as loginerType,
-        registration
+        registration,
+        company_name as companyName
         FROM user_table WHERE  email= #{email} AND password = #{password};
     </select>
+    <select id="selectByEmail" parameterType="com.yb.team.project.model.UserTable" resultType="UserTable">
+        SELECT
+        login_id as loginId,
+        account,
+        password,
+        email,
+        phone_number as phoneNumber,
+        license_key as licenseKey,
+        is_admin as isAdmin,
+        loginer_type as loginerType,
+        registration,
+        company_name as companyName
+        FROM user_table WHERE  email= #{email};
+    </select>
+    <select id="selectByPhone" parameterType="com.yb.team.project.model.UserTable" resultType="UserTable">
+        SELECT
+        login_id as loginId,
+        account,
+        password,
+        email,
+        phone_number as phoneNumber,
+        license_key as licenseKey,
+        is_admin as isAdmin,
+        loginer_type as loginerType,
+        registration,
+        company_name as companyName
+        FROM user_table WHERE  phone_number= #{phoneNumber};
+    </select>
+    <select id="selectByLicencekey" parameterType="com.yb.team.project.model.UserTable" resultType="UserTable">
+        SELECT
+        login_id as loginId,
+        account,
+        password,
+        email,
+        phone_number as phoneNumber,
+        license_key as licenseKey,
+        is_admin as isAdmin,
+        loginer_type as loginerType,
+        registration,
+        company_name as companyName
+        FROM user_table WHERE  company_name= #{companyName} and  license_key= #{licenseKey}and loginer_type = '1';
+    </select>
+
     <insert id="personRegister" parameterType="com.yb.team.project.model.UserTable">
         INSERT INTO user_table
             (account,
@@ -47,8 +92,9 @@
             phone_number,
             license_key,
             is_admin,
-            loginer_type)
-            VALUES( #{account}, #{password}, #{email}, #{phoneNumber}, #{licenseKey}, #{isAdmin}, #{loginerType});
+            loginer_type,
+            company_name)
+            VALUES( #{account}, #{password}, #{email}, #{phoneNumber}, #{licenseKey}, #{isAdmin}, #{loginerType},#{companyName});
     </insert>
 
 </mapper>

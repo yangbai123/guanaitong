@@ -11,19 +11,19 @@
       classpath:applicationContext-kaptacha.xml
     </param-value>
   </context-param>
-  <!--&lt;!&ndash; post请求乱码的处理 &ndash;&gt;-->
-  <!--<filter>-->
-    <!--<filter-name>encoding</filter-name>-->
-    <!--<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>-->
-    <!--<init-param>-->
-      <!--<param-name>encoding</param-name>-->
-      <!--<param-value>UTF-8</param-value>-->
-    <!--</init-param>-->
-  <!--</filter>-->
-  <!--<filter-mapping>-->
-    <!--<filter-name>encoding</filter-name>-->
-    <!--<url-pattern>/</url-pattern>-->
-  <!--</filter-mapping>-->
+  <!-- post请求乱码的处理 -->
+  <filter>
+    <filter-name>encoding</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encoding</filter-name>
+    <url-pattern>/</url-pattern>
+  </filter-mapping>
 
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

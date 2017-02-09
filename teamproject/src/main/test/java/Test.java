@@ -1,6 +1,7 @@
 
 import com.yb.team.project.dao.UserTableMapper;
 import com.yb.team.project.model.UserTable;
+import com.yb.team.project.service.UserServices;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -11,10 +12,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
+
 public class Test {
 
     @Autowired
     UserTableMapper userTableMapper;
+    @Autowired
+    UserServices userServices;
     @org.junit.Test
     public void userTableTest(){
         UserTable userTable = new UserTable();
@@ -43,5 +47,27 @@ public class Test {
         userTable.setRegistration("sdadsa");
         userTable.setLicenseKey("asdas");
         System.out.println(userTableMapper.personRegister(userTable));
+    }
+    @org.junit.Test
+    public void userTableTest3(){
+        UserTable userTable = new UserTable();
+        userTable.setEmail("2391231214@qq.com");
+        UserTable userTable1 = userServices.selectByEmail(userTable);
+        System.out.println(userTable1.getAccount());
+    }
+    @org.junit.Test
+    public void userTableTest4(){
+        UserTable userTable = new UserTable();
+        userTable.setPhoneNumber(18945993676l);
+        UserTable userTable1 = userServices.selectByPhone(userTable);
+        System.out.println(userTable1.getAccount());
+    }
+    @org.junit.Test
+    public void userTableTest5(){
+        UserTable userTable = new UserTable();
+        userTable.setCompanyName("国际");
+        userTable.setLicenseKey("yangbai");
+        UserTable userTable1 = userServices.selectByLicence(userTable);
+        System.out.println(userTable1.getAccount());
     }
 }

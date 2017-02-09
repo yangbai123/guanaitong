@@ -19,6 +19,16 @@ public class UserTable {
 
     private String registration;
 
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    private String companyName;
+
     public String getLoginId() {
         return loginId;
     }
@@ -90,6 +100,7 @@ public class UserTable {
     public void setRegistration(String registration) {
         this.registration = registration == null ? null : registration.trim();
     }
+
     public Boolean getAdmin() {
         return isAdmin;
     }

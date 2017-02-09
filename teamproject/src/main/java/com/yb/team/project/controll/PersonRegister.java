@@ -2,6 +2,7 @@ package com.yb.team.project.controll;
 
 import com.yb.team.project.model.UserTable;
 import com.yb.team.project.service.PersonRegisterService;
+import com.yb.team.project.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 public class PersonRegister {
     @Autowired
     PersonRegisterService personRegisterService;
+    @Autowired
+    UserServices userServices;
     @RequestMapping(value = "/personregister")
     public String personRegister(){
         return "/register/personregister";
@@ -29,15 +32,18 @@ public class PersonRegister {
     @RequestMapping(value = "/personregistered")
     public String personregistered(HttpServletRequest request) {
         String checkCode = request.getParameter("checkCode");
+        String email = request.getParameter("email");
+        String phoneNumber = request.getParameter("phoneNumber");
         if (checkCode.equals("7878")) {
             UserTable userTable = new UserTable();
             userTable.setAccount(request.getParameter("account"));
-            userTable.setEmail(request.getParameter("email"));
+            userTable.setEmail(email);
             userTable.setPassword(request.getParameter("password"));
-            userTable.setPhoneNumber(Long.parseLong(request.getParameter("phoneNumber")));
+            userTable.setPhoneNumber(Long.parseLong(phoneNumber));
             userTable.setIsAdmin(false);
             userTable.setLoginerType(false);
             userTable.setLicenseKey((request.getParameter("licenseKey")));
+            userTable.setCompanyName((request.getParameter("companyName")));
             boolean resultRegister = personRegisterService.personRegister(userTable);
             if (resultRegister) {
                 return "success";

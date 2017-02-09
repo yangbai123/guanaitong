@@ -10,4 +10,7 @@ public interface UserTableMapper {
     Boolean personRegister(UserTable userTable);
     UserTable getLoginByEmail(UserTable userTable);
     UserTable getLoginByPhone(UserTable userTable);
+    UserTable selectByEmail(UserTable userTable);
+    UserTable selectByPhone(UserTable userTable);
+    UserTable selectByLicencekey(UserTable userTable);
 }

@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <label class="control-label col-6">短信验证码</label>
                         <div class="col-offset-6">
-                            <input class="u-txt lg" type="text" placeholder="请输入手机号" style="width: 141px;"
+                            <input class="u-txt lg" type="text" placeholder="请输入验证码" style="width: 141px;"
                                    id="checkCode">
                             <a href="javascript:;" class="u-btn u-btn-default btn-vertify ml6">发送验证码</a>
                             <span class="f12 ml10 c7 hide ">请输入验证码！</span>
@@ -95,14 +95,15 @@
                     </div>
                     <div class="form-group">
                         <div class="col-offset-6">
-                            <label class="u-checkbox ml10"><input type="checkbox" id="checkbox"><i class="ico"></i>同意遵守<a href="#">《服务条款》</a></label>
-                            <span class="f12 ml10 c7 hide" id="check">请同意遵守服务条款！</span>
+                            <label class="u-checkbox ml10"><input type="checkbox" id="checkbox"
+                                                                  onclick="clickcheckbox(this)"><i
+                                    class="ico"></i>同意遵守<a href="#">《服务条款》</a></label>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-offset-6">
-                            <a href="javascript:;" class="u-btn lg lw u-btn-primary"
-                               onclick="personRegister(this)">注册</a>
+                            <a href="javascript:;" class="u-btn lg lw u-btn-primary disabled"
+                               id="register">注册</a>
                         </div>
                     </div>
                 </div>
@@ -124,6 +125,19 @@
 </body>
 <script src="/resources/js/page.js"></script>
 <script>
+    function clickcheckbox(obj) {
+        if ($("#checkbox").is(":checked")) {
+            $("#register").removeClass("disabled");
+            $("#register").on("click", function () {
+                personRegister(this);
+            });
+        }
+        if (!$("#checkbox").is(":checked")) {
+            $("#register").addClass("disabled");
+            $("#register").off();
+        }
+    }
+    ;
     function personRegister(obj) {
         var isOk = 0;
         var account = $("#account").val();
@@ -154,24 +168,34 @@
             $("#account").next().hide();
         }
         ;
-        if (isEmpty(companyName)) {
+        if (isNotEmpty(companyName) & isNotEmpty(licenseKey)) {
+            alert(1);
+            $.ajax({
+                        type: "post",
+                        url: "http://localhost:8828/admin/licenseverify",
+                        async: false,
+                        data: {companyName: companyName, licenseKey: licenseKey},
+                        success: function (data) {
+                            alert(data);
+                            if (data == "false") {
+                                $("#companyName").addClass("error");
+                                $("#companyName").next().text("公司名称或授权码有误").show();
+                                $("#licenseKey").addClass("error");
+                                isOk = 1;
+                            } else if (data == "true") {
+                                $("#companyName").removeClass("error");
+                                $("#companyName").next().hide();
+                                $("#licenseKey").removeClass("error");
+                            }
+                        }
+                    }
+            );
+        } else {
             $("#companyName").addClass("error");
-            $("#companyName").next().show();
-            isOk = 1;
-        } else {
-            $("#companyName").removeClass("error");
-            $("#companyName").next().hide();
+            $("#companyName").next().text("公司名称或授权码不能为空").show();
         }
         ;
-        if (isEmpty(licenseKey)) {
-            $("#licenseKey").addClass("error");
-            $("#licenseKey").next().show();
-            isOk = 1;
-        } else {
-            $("#licenseKey").removeClass("error");
-            $("#licenseKey").next().hide();
-        }
-        ;
+
         if (isEmpty(email)) {
             $("#email").addClass("error");
             $("#email").next().text("请输入邮箱").show();
@@ -182,8 +206,23 @@
                 $("#email").next().text("请输入正确的邮箱").show();
                 isOk = 1;
             } else {
-                $("#email").removeClass("error");
-                $("#email").next().hide()
+                $.ajax({
+                            type: "post",
+                            url: "http://localhost:8828/admin/emailverify",
+                            async: false,
+                            data: {email: email},
+                            success: function (data) {
+                                if (data == "true") {
+                                    $("#email").addClass("error");
+                                    $("#email").next().text("邮箱已被使用").show();
+                                    isOk = 1;
+                                } else if (data == "false") {
+                                    $("#email").removeClass("error");
+                                    $("#email").next().hide();
+                                }
+                            }
+                        }
+                );
             }
         }
         ;
@@ -197,8 +236,23 @@
                 $("#phoneNumber").next().text("请输入正确的手机号").show();
                 isOk = 1;
             } else {
-                $("#phoneNumber").removeClass("error");
-                $("#phoneNumber").next().hide()
+                $.ajax({
+                            type: "post",
+                            url: "http://localhost:8828/admin/phoneverify",
+                            async: false,
+                            data: {phoneNumber: phoneNumber},
+                            success: function (data) {
+                                if (data == "true") {
+                                    $("#phoneNumber").addClass("error");
+                                    $("#phoneNumber").next().text("手机号已被使用").show();
+                                    isOk = 1;
+                                } else if (data == "false") {
+                                    $("#phoneNumber").removeClass("error");
+                                    $("#phoneNumber").next().hide();
+                                }
+                            }
+                        }
+                );
             }
         }
         ;
@@ -207,37 +261,49 @@
             $("#password").next().text("请输入密码").show();
             isOk = 1;
         } else {
-            if (password != repeatPassword) {
+            if (passwordLength(password)) {
+                if (password != repeatPassword) {
+                    $("#password").addClass("error");
+                    $("#password").next().text("俩次输入密码不一致").show();
+                    isOk = 1;
+                }
+                else {
+                    $("#password").removeClass("error");
+                    $("#password").next().hide();
+                }
+            } else {
                 $("#password").addClass("error");
-                $("#password").next().text("俩次输入密码不一致").show();
+                $("#password").next().text("请输入4-12位正确格式的密码").show();
                 isOk = 1;
             }
-            else {
-                $("#password").removeClass("error");
-                $("#password").next().hide();
-            }
-        };
-        if(!$("#checkbox").is(":checked")){
-            $("#check").show();
-            isOk=1;
-        }else {
-            $("#check").hide();
+
         }
+        ;
+//        if (!$("#checkbox").is(":checked")) {
+//            $("#check").show();
+//            isOk = 1;
+//        } else {
+//            $("#check").hide();
+//        }
+
         if (isOk == 0) {
             $.ajax({
                         type: "post",
                         url: "http://localhost:8828/admin/personregistered",
+                        async: false,
                         data: params,
                         success: function (data) {
-                            alert(data);
-                            if(data=="success"){
+
+                            if (data == "success") {
                                 window.location.href = "http://localhost:8828/admin/personsuccess";
                             }
                         }
                     }
             );
         }
-    };
+    }
+
+
     $(function () {
         $('.btn-vertify').click(function () {
             if ($(this).hasClass('disabled'))return;

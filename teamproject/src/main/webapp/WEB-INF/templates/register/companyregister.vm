@@ -26,9 +26,27 @@
         <div class="m-tab1-con company-account">
             <div class="m-form m-form-label-tr">
                 <div class="form-group">
+                    <label class="control-label col-6">企业名称</label>
+                    <div class="col-offset-6">
+                        <input class="u-txt lg" type="text" placeholder="请输入营业执照上的名称" style="width: 293px;">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="control-label col-6">企业邮箱</label>
                     <div class="col-offset-6">
                         <input class="u-txt lg" type="text" placeholder="请输入公司或团队邮箱" style="width: 293px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-6">注册号</label>
+                    <div class="col-offset-6">
+                        <input class="u-txt lg" type="text" placeholder="请输入15位工商注册号" style="width: 293px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-6">手机号</label>
+                    <div class="col-offset-6">
+                        <input class="u-txt lg" type="text" placeholder="请输入手机号" style="width: 293px;">
                     </div>
                 </div>
                 <div class="form-group">
@@ -38,14 +56,23 @@
                         <a href="#"><img src="http://localhost:8828/admin/kaptcha/code" class="mt10 fl ml10"></a>
                     </div>
                 </div>
+
                 <div class="form-group">
+                    <label class="control-label col-6">管理密码</label>
                     <div class="col-offset-6">
-                        <label class="u-checkbox ml10"><input type="checkbox"><i class="ico"></i>同意遵守<a href="#">《服务条款》</a></label>
+                        <input class="u-txt lg" type="text" placeholder="6-12位，字母数字或字符" style="width: 293px;">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-offset-6">
-                        <a href="http://localhost:8828/admin/registernext" class="u-btn lg lw u-btn-primary">注册</a>
+                        <label class="u-checkbox ml10"><input type="checkbox" id="checkbox"
+                                                              onclick="clickcheckbox(this)"><i
+                                class="ico"></i>同意遵守<a href="#">《服务条款》</a></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-offset-6">
+                        <a href="http://localhost:8828/admin/companysuccess" class="u-btn lg lw u-btn-primary disabled" id="register">注册</a>
                     </div>
                 </div>
             </div>
@@ -64,8 +91,20 @@
 <![endif]-->
 
 </body>
-<script src="/js/page.js"></script>
+<script src="/resources/js/page.js"></script>
 <script>
+    function clickcheckbox(obj){
+        if ($("#checkbox").is(":checked")) {
+            $("#register").removeClass("disabled");
+//            $("#register").on("click", function(){
+//                personRegister(this);
+//            });
+        }
+        if (!$("#checkbox").is(":checked")) {
+            $("#register").addClass("disabled");
+//            $("#register").off();
+        }
+    };
     $(function(){
         $('.u-checkbox').checkbox();
     })

@@ -21,4 +21,13 @@ public class UserServices {
     public Boolean personRegister(UserTable userTable){
         return userTableMapper.personRegister(userTable);
     }
+    public UserTable selectByEmail(UserTable userTable){
+        return  userTableMapper.selectByEmail(userTable);
+    }
+    public UserTable selectByPhone(UserTable userTable){
+        return  userTableMapper.selectByPhone(userTable);
+    }
+    public UserTable selectByLicence(UserTable userTable){
+        return  userTableMapper.selectByLicencekey(userTable);
+    }
 }

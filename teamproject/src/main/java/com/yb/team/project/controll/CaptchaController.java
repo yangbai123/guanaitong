@@ -21,7 +21,7 @@ import com.google.code.kaptcha.impl.DefaultNoise;
 /**
  * 防止Captcha机器人登陆
  * @author xuchengfei
- * 
+ *
  */
 @Controller
 @RequestMapping("/kaptcha")
