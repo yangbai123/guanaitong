@@ -84,7 +84,7 @@
         FROM user_table WHERE  company_name= #{companyName} and  license_key= #{licenseKey}and loginer_type = '1';
     </select>
 
-    <insert id="personRegister" parameterType="com.yb.team.project.model.UserTable">
+    <insert id="register" parameterType="com.yb.team.project.model.UserTable">
         INSERT INTO user_table
             (account,
             password,
@@ -93,8 +93,9 @@
             license_key,
             is_admin,
             loginer_type,
-            company_name)
-            VALUES( #{account}, #{password}, #{email}, #{phoneNumber}, #{licenseKey}, #{isAdmin}, #{loginerType},#{companyName});
+            company_name,
+            registration)
+            VALUES( #{account}, #{password}, #{email}, #{phoneNumber}, #{licenseKey}, #{isAdmin}, #{loginerType},#{companyName},#{registration});
     </insert>
 
 </mapper>

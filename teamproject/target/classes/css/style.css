@@ -67,7 +67,7 @@
 .m-tab1-hd .item.active .icon-company{background-position: -24px -30px;}
 
 .m-tab2-hd {border-bottom:1px #E5E5E5 solid;height: 36px; text-align: center;}
-.m-tab2-hd .item{display:inline-block;height:34px;width: 80px;text-align: center;line-height: 34px;margin-left: 50px;margin-right: 50px;border-bottom:2px #fff solid;color:#333;font-size:20px;text-decoration: none;position: relative;}
+.m-tab2-hd .item{display:inline-block;height:34px;width: 100px;text-align: center;line-height: 34px;margin-left: 50px;margin-right: 50px;border-bottom:2px #fff solid;color:#333;font-size:20px;text-decoration: none;position: relative;}
 .m-tab2-hd .item.active{border-bottom-color:#f60;}
 .m-tab2-hd .icon{display:inline-block;width:24px;height:30px;overflow:hidden;background: url(../../../resources/img/tab-icon.png) no-repeat;position: absolute;top:50%;margin-top: -15px;left:40px;}
 .m-tab1-hd .icon-personal{background-position: 0 0;}

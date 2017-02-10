@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserTableMapper {
-    Boolean personRegister(UserTable userTable);
+    Boolean register(UserTable userTable);
     UserTable getLoginByEmail(UserTable userTable);
     UserTable getLoginByPhone(UserTable userTable);
     UserTable selectByEmail(UserTable userTable);

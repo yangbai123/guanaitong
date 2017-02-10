@@ -19,7 +19,7 @@ public class UserServices {
         return userTableMapper.getLoginByEmail(userTable);
     }
     public Boolean personRegister(UserTable userTable){
-        return userTableMapper.personRegister(userTable);
+        return userTableMapper.register(userTable);
     }
     public UserTable selectByEmail(UserTable userTable){
         return  userTableMapper.selectByEmail(userTable);

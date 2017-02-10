@@ -34,7 +34,6 @@ public class ExistVerify {
     @RequestMapping(value = "/phoneverify")
     public String phoneVerify(HttpServletRequest request) {
         String phoneNumber = request.getParameter("phoneNumber");
-        System.out.println(phoneNumber);
         UserTable userTable = new UserTable();
         userTable.setPhoneNumber(Long.parseLong(phoneNumber));
         UserTable resultUserTable = userServices.selectByPhone(userTable);

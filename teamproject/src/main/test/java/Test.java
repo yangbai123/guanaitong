@@ -39,14 +39,15 @@ public class Test {
     public void userTableTest2(){
         UserTable userTable = new UserTable();
         userTable.setAccount("laoshi");
-        userTable.setEmail("239123124@qq.com");
+        userTable.setEmail("239113114@qq.com");
         userTable.setPassword("yangbai");
-        userTable.setPhoneNumber(Long.parseLong("18945993672"));
+        userTable.setPhoneNumber(Long.parseLong("18925993672"));
+        userTable.setCompanyName("的撒打算的");
         userTable.setIsAdmin(true);
         userTable.setLoginerType(true);
         userTable.setRegistration("sdadsa");
         userTable.setLicenseKey("asdas");
-        System.out.println(userTableMapper.personRegister(userTable));
+        System.out.println(userTableMapper.register(userTable));
     }
     @org.junit.Test
     public void userTableTest3(){

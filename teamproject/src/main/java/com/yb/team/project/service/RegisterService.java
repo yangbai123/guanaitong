@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
  * Created by Administrator on 2017/2/8.
  */
 @Service
-public class PersonRegisterService {
+public class RegisterService {
     @Autowired
     UserTableMapper userTableMapper;
-    public Boolean personRegister(UserTable userTable){
-        return userTableMapper.personRegister(userTable);
+    public Boolean register(UserTable userTable){
+        return userTableMapper.register(userTable);
     }
 }

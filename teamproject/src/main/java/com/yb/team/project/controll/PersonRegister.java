@@ -1,7 +1,7 @@
 package com.yb.team.project.controll;
 
 import com.yb.team.project.model.UserTable;
-import com.yb.team.project.service.PersonRegisterService;
+import com.yb.team.project.service.RegisterService;
 import com.yb.team.project.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class PersonRegister {
     @Autowired
-    PersonRegisterService personRegisterService;
+    RegisterService registerService;
     @Autowired
     UserServices userServices;
     @RequestMapping(value = "/personregister")
@@ -44,7 +44,7 @@ public class PersonRegister {
             userTable.setLoginerType(false);
             userTable.setLicenseKey((request.getParameter("licenseKey")));
             userTable.setCompanyName((request.getParameter("companyName")));
-            boolean resultRegister = personRegisterService.personRegister(userTable);
+            boolean resultRegister = registerService.register(userTable);
             if (resultRegister) {
                 return "success";
             } else {

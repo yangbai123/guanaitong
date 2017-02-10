@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
     <script type="text/javascript" src="/resources/js/jquery.js"></script>
+    <script type="text/javascript" src="/resources/sg/sgutil.js"></script>
+    <script type="text/javascript" src="/resources/sg/sg.js"></script>
 </head>
 
 <body>
@@ -23,56 +25,84 @@
             <a href="http://localhost:8828/admin/personregister" class="item"><i class="icon icon-personal"></i>个人账户</a>
             <a href="http://localhost:8828/admin/companyregister" class="item active"><i class="icon icon-company"></i>企业账户</a>
         </div>
-        <div class="m-tab1-con company-account">
-            <div class="m-form m-form-label-tr">
-                <div class="form-group">
-                    <label class="control-label col-6">企业名称</label>
-                    <div class="col-offset-6">
-                        <input class="u-txt lg" type="text" placeholder="请输入营业执照上的名称" style="width: 293px;">
+        <div class="m-tab1-con personal-account">
+            <div class="m-tab2-hd clearfix">
+                <a href="javascript:;" class="item active">企业注册</a>
+            </div>
+            <div class="m-tab2-con">
+                <div class="m-form m-form-label-tr">
+                    <div class="form-group">
+                        <label class="control-label col-6">用户名称</label>
+                        <div class="col-offset-6">
+                            <input class="u-txt lg" type="text" placeholder="请输入用户名称" style="width: 293px;"
+                                   id="account">
+                            <span class="f12 ml10 c7 hide">请输入用户名称！</span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-6">企业邮箱</label>
-                    <div class="col-offset-6">
-                        <input class="u-txt lg" type="text" placeholder="请输入公司或团队邮箱" style="width: 293px;">
+                    <div class="form-group">
+                        <label class="control-label col-6">企业名称</label>
+                        <div class="col-offset-6">
+                            <input class="u-txt lg" type="text" placeholder="请输入营业执照上的名称" style="width: 293px;"
+                                   id="companyName">
+                            <span class="f12 ml10 c7 hide">请输入营业执照上的名称</span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-6">注册号</label>
-                    <div class="col-offset-6">
-                        <input class="u-txt lg" type="text" placeholder="请输入15位工商注册号" style="width: 293px;">
+                    <div class="form-group">
+                        <label class="control-label col-6">企业邮箱</label>
+                        <div class="col-offset-6">
+                            <input class="u-txt lg" type="text" placeholder="请输入公司或团队邮箱" style="width: 293px;"
+                                   id="email">
+                            <span class="f12 ml10 c7 hide"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-6">手机号</label>
-                    <div class="col-offset-6">
-                        <input class="u-txt lg" type="text" placeholder="请输入手机号" style="width: 293px;">
+                    <div class="form-group">
+                        <label class="control-label col-6">注册号</label>
+                        <div class="col-offset-6">
+                            <input class="u-txt lg" type="text" placeholder="请输入15位工商注册号" style="width: 293px;"
+                                   id="registration">
+                            <span class="f12 ml10 c7 hide">1</span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-6">验证码</label>
-                    <div class="col-offset-6">
-                        <input class="u-txt lg fl" type="text" placeholder="请输入验证码" style="width: 214px;">
-                        <a href="#"><img src="http://localhost:8828/admin/kaptcha/code" class="mt10 fl ml10"></a>
+                    <div class="form-group">
+                        <label class="control-label col-6">手机号</label>
+                        <div class="col-offset-6">
+                            <input class="u-txt lg" type="text" placeholder="请输入手机号" style="width: 293px;"
+                                   id="phoneNumber">
+                            <span class="f12 ml10 c7 hide">请输入用户名！</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="control-label col-6">管理密码</label>
-                    <div class="col-offset-6">
-                        <input class="u-txt lg" type="text" placeholder="6-12位，字母数字或字符" style="width: 293px;">
+                    <div class="form-group">
+                        <label class="control-label col-6">验证码</label>
+                        <div class="col-offset-6">
+                            <input class="u-txt lg fl" type="text" placeholder="请输入验证码" style="width: 184px;"
+                                   id="checkCode" maxlength="4">
+                            <a href="#"><img src="http://localhost:8828/admin/kaptcha/code"
+                                             class=" fl ml10" onclick="changeCode(this)"></a>
+                            <span class="f12 ml10 c7 hide">请输入验证码！</span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-offset-6">
-                        <label class="u-checkbox ml10"><input type="checkbox" id="checkbox"
-                                                              onclick="clickcheckbox(this)"><i
-                                class="ico"></i>同意遵守<a href="#">《服务条款》</a></label>
+                    <div class="form-group">
+                        <label class="control-label col-6">管理密码</label>
+                        <div class="col-offset-6">
+                            <input class="u-txt lg" type="text" placeholder="6-12位，字母数字或字符" style="width: 293px;"
+                                   id="password">
+                            <span class="f12 ml10 c7 hide">请输入密码！</span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-offset-6">
-                        <a href="http://localhost:8828/admin/companysuccess" class="u-btn lg lw u-btn-primary disabled" id="register">注册</a>
+                    <div class="form-group">
+                        <div class="col-offset-6">
+                            <label class="u-checkbox ml10"><input type="checkbox" id="checkbox"
+                                                                  onclick="clickcheckbox(this)"><i
+                                    class="ico"></i>同意遵守<a href="#">《服务条款》</a></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-offset-6">
+                            <a href="javascript:;" class="u-btn lg lw u-btn-primary disabled"
+                               id="register">注册</a>
+                        </div>
+                        <div class="cpage"></div>
                     </div>
                 </div>
             </div>
@@ -93,19 +123,207 @@
 </body>
 <script src="/resources/js/page.js"></script>
 <script>
-    function clickcheckbox(obj){
+//    var tzAdmin = {
+//        init: function (itemCount) {
+//            $(".cpage").tzPage(itemCount, {
+//                num_edge_entries: 1, //边缘页数
+//                num_display_entries: 4, //主体页数
+//                num_edge_entries: 5,
+//                current_page: 0,
+//                showGo: true,
+//                showSelect: true,
+//                items_per_page: 10, //每页显示X项
+//                prev_text: "前一页",
+//                next_text: "后一页",
+//                callback: function (pageNo, psize) {//回调函数
+//                }
+//            });
+//        }
+//    };
+//    tzAdmin.init();
+    function changeCode(img) {
+        img.src = "http://localhost:8828/admin/kaptcha/code?d=" + new Date().getTime();
+    }
+    function clickcheckbox(obj) {
         if ($("#checkbox").is(":checked")) {
             $("#register").removeClass("disabled");
-//            $("#register").on("click", function(){
-//                personRegister(this);
-//            });
+            $("#register").on("click", function () {
+                companyRegister(this);
+            });
         }
         if (!$("#checkbox").is(":checked")) {
             $("#register").addClass("disabled");
-//            $("#register").off();
+            $("#register").off();
         }
-    };
-    $(function(){
+    }
+    ;
+    function companyRegister(obj) {
+        var isOk = 0;
+        var account = $("#account").val();
+        var email = $("#email").val();
+        var phoneNumber = $("#phoneNumber").val();
+        var checkCode = $("#checkCode").val();
+        var password = $("#password").val();
+        var companyName = $("#companyName").val();
+        var registration = $("#registration").val();
+        var params = {
+            account: account,
+            email: email,
+            phoneNumber: phoneNumber,
+            checkCode: checkCode,
+            password: password,
+            companyName: companyName,
+            registration: registration
+        };
+//        alert(JSON.stringify(params));
+        if (isEmpty(account)) {
+            $("#account").addClass("error");
+            $("#account").next().show();
+            isOk = 1;
+        } else {
+            $("#account").removeClass("error");
+            $("#account").next().hide();
+        }
+        ;
+        if (isEmpty(companyName)) {
+            $("#companyName").addClass("error");
+            $("#companyName").next().show();
+            isOk = 1;
+        } else {
+            $("#companyName").removeClass("error");
+            $("#companyName").next().hide();
+        }
+        ;
+
+        if (isEmpty(email)) {
+            $("#email").addClass("error");
+            $("#email").next().text("请输入邮箱").show();
+            isOk = 1;
+        } else {
+            if (!is_email(email)) {
+                $("#email").addClass("error");
+                $("#email").next().text("请输入正确的邮箱").show();
+                isOk = 1;
+            } else {
+                $.ajax({
+                            type: "post",
+                            url: "http://localhost:8828/admin/emailverify",
+                            async: false,
+                            data: {email: email},
+                            success: function (data) {
+                                if (data == "true") {
+                                    $("#email").addClass("error");
+                                    $("#email").next().text("邮箱已被使用").show();
+                                    isOk = 1;
+                                } else if (data == "false") {
+                                    $("#email").removeClass("error");
+                                    $("#email").next().hide();
+                                }
+                            }
+                        }
+                );
+            }
+        }
+        ;
+
+        if (isEmpty(phoneNumber)) {
+            $("#phoneNumber").addClass("error");
+            $("#phoneNumber").next().text("请输入手机号").show();
+            isOk = 1;
+        } else {
+            if (!is_cellphoneNum(phoneNumber)) {
+                $("#phoneNumber").addClass("error");
+                $("#phoneNumber").next().text("请输入正确的手机号").show();
+                isOk = 1;
+            } else {
+                $.ajax({
+                            type: "post",
+                            url: "http://localhost:8828/admin/phoneverify",
+                            async: false,
+                            data: {phoneNumber: phoneNumber},
+                            success: function (data) {
+                                if (data == "true") {
+                                    $("#phoneNumber").addClass("error");
+                                    $("#phoneNumber").next().text("手机号已被使用").show();
+                                    isOk = 1;
+                                } else if (data == "false") {
+                                    $("#phoneNumber").removeClass("error");
+                                    $("#phoneNumber").next().hide();
+                                }
+                            }
+                        }
+                );
+            }
+        }
+        ;
+
+        if (isEmpty(password)) {
+            $("#password").addClass("error");
+            $("#password").next().text("请输入密码").show();
+            isOk = 1;
+        } else {
+            if (passwordLength(password)) {
+
+                $("#password").removeClass("error");
+                $("#password").next().hide();
+            }
+
+            else {
+                $("#password").addClass("error");
+                $("#password").next().text("请输入4-12位正确格式的密码").show();
+                isOk = 1;
+            }
+            ;
+        }
+        ;
+        if (isEmpty(checkCode)) {
+            $("#checkCode").addClass("error");
+            $("#checkCode").next().show();
+            isOk = 1;
+        } else {
+            $("#checkCode").removeClass("error");
+            $("#checkCode").next().hide();
+        }
+        ;
+        if (isEmpty(registration)) {
+            $("#registration").addClass("error");
+            $("#registration").next().text("请输入正确的15位注册号").show();
+            isOk = 1;
+        } else {
+            if (registration.length != 15) {
+                $("#registration").addClass("error");
+                $("#registration").next().text("请输入正确的15位注册号").show();
+                isOk = 1;
+            } else {
+                $("#registration").removeClass("error");
+                $("#registration").next().hide();
+            }
+        }
+        ;
+        if (isOk == 0) {
+            alert(1);
+            $.ajax({
+                        type: "post",
+                        url: "http://localhost:8828/admin/companyregistered",
+                        async: false,
+                        data: params,
+                        success: function (data) {
+                            alert(data);
+                            if (data == "success") {
+                                window.location.href = "http://localhost:8828/admin/companysuccess";
+                            } else if (data == "checkerror") {
+                                $("#checkCode").addClass("error");
+                                $("#checkCode").next().next().text("验证码输入有误").show();
+                            } else {
+                                alert("注册失败");
+                            }
+                        }
+                    }
+            );
+        }
+    }
+    ;
+    $(function () {
         $('.u-checkbox').checkbox();
     })
 </script>

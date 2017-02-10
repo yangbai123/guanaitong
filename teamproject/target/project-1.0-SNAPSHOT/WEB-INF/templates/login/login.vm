@@ -109,11 +109,19 @@
                 yb_login();
             }
         });
+//        alert(tzMap.get("keke_admin_account",1));
+        $("#account").keyup(function(){
+            tzMap.put("keke_admin_account",$(this).val(),1);
+        });
+
+        var username = tzMap.get("keke_admin_account",1);
+        if(username)$("#account").val(username);
     });
     function yb_login(obj) {
         var account = $("#account").val();
         var password = $("#password").val();
         var params = {acount:account,password:password};
+        loading("正在提交，请稍等...");
 //        alert(JSON.stringify(params));
         $.ajax({
             type:"post",
@@ -132,10 +140,10 @@
                     $("#account").focus();
                     loading("请输入正确的用户名和密码");
                 }
-                else if(data=="empty")
+                else if(data=="empty"){
                     $("#account").focus();
                     loading("用户名和密码不能为空");
-            }
+            }}
         });
     };
 
