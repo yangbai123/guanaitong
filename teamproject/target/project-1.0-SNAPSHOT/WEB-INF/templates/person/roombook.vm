@@ -75,7 +75,7 @@
                             </select>
                         </div>
                         <span class="fl ml6 mr6">~</span>
-                        <input type="text" class="u-txt date fl" value="2016-07-01" onfocus="SelectDate(this, 0);">
+                        <input type="text" class="u-txt date fl"  onfocus="SelectDate(this, 0);">
                         <div class="u-select j-select2 fl ml10" style="width: 65px;">
                             <select name="province" id="province">
                                 <option>12:00</option>
@@ -164,13 +164,12 @@
 <script src="/resources/js/mcalendar.js"></script>
 <script>
     $(function(){
-
         $('.metting-reservation-bd').timeChart({
             'xAxis':['08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00'],
             'yAxis':['平台中心会议室1（1~6人）','平台中心会议室2（1~6人）','接待室1（6~12人）','接待室2（6~12人）','IT会议室1（12人以上）','IT会议室2（12人以上）','接待室3（6~12人）','接待室4（6~12人）','IT会议室3（12人以上）','IT会议室4（12人以上）','IT会议室5（12人以上）','IT会议室6（12人以上）'],
             'xStep':2,
             'data':[
-                {'id':'mybook','date':'201-11-20','startTime':'08:30','endTime':'11:30','address':'平台中心会议室1（1~6人）','bookPeople':'小燕','mettingTheme':'项目会议讨论'},
+                {'id':'mybook','date':'201-11-20','startTime':'08:30','endTime':'11:30','address':'平台中心会议室1（1~6人）','bookPeople':'欧阳菲菲','mettingTheme':'项目会议讨论'},
                 {'id':'mybook','date':'201-11-20','startTime':'14:30','endTime':'16:00','address':'平台中心会议室2（1~6人）','bookPeople':'欧阳菲菲','mettingTheme':'项目会议讨论'},
                 {'id':'booked','startTime':'10:00','endTime':'12:30','address':'接待室1（6~12人）'},
                 {'id':'booked','startTime':'15:00','endTime':'17:30','address':'接待室2（6~12人）'},
@@ -183,8 +182,10 @@
                 {'text':'可预定','bgcolor':'#fff','borderC':'#eee'}
             ]
         });
-        var d=new Date(),aDate=$('.date-txt').html().split('-');
-        d.setFullYear(aDate[0],aDate[1]-1,aDate[2]);
+        var d=new Date();
+        $('.date-txt').html(d.getFullYear()+'-'+(d.getMonth()<10?'0'+(d.getMonth()*1+1):(d.getMonth()*1+1))+'-'+(d.getDate()<10?'0'+d.getDate():d.getDate()) );
+//        aDate=$('.date-txt').html().split('-');
+//        d.setFullYear(aDate[0],aDate[1]-1,aDate[2]);
         $('#oDate').calendar({
             width: 338,
             height: 290,

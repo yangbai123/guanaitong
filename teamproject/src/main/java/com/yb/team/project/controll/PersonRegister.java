@@ -19,15 +19,17 @@ public class PersonRegister {
     RegisterService registerService;
     @Autowired
     UserServices userServices;
+
     @RequestMapping(value = "/personregister")
-    public String personRegister(){
+    public String personRegister() {
         return "/register/personregister";
     }
 
     @RequestMapping(value = "/personsuccess")
-    public String reisterSuccess(){
+    public String reisterSuccess() {
         return "/register/personsuccess";
     }
+
     @ResponseBody
     @RequestMapping(value = "/personregistered")
     public String personregistered(HttpServletRequest request) {
@@ -50,7 +52,7 @@ public class PersonRegister {
             } else {
                 return "error";
             }
-        } else{
+        } else {
             return "checkerror";
         }
     }

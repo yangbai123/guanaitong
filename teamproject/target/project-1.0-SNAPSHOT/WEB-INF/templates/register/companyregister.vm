@@ -7,15 +7,6 @@
     <title>企业账户</title>
     <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/resources/sg/css/common.css">
-    <link rel="stylesheet" type="text/css" href="/resources/sg/css/sganimate.css">
-    <link rel="stylesheet" type="text/css" href="/resources/sg/css/tz_magic.css">
-    <link rel="stylesheet" type="text/css" href="/resources/sg/css/tz-slider.css">
-    <link rel="stylesheet" type="text/css" href="/resources/sg/css/animate.css.css">
-##    <link rel="stylesheet" type="text/css" href="/resources/sg/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/resources/sg/css/tz-pagecss">
-    <link rel="stylesheet" type="text/css" href="/resources/sg/css/tz-tip.css">
-    <link rel="stylesheet" type="text/css" href="/resources/sg/css/tz-tab.css.">
     <script type="text/javascript" src="/resources/js/jquery.js"></script>
     <script type="text/javascript" src="/resources/sg/sgutil.js"></script>
     <script type="text/javascript" src="/resources/sg/sg.js"></script>
@@ -132,24 +123,6 @@
 </body>
 <script src="/resources/js/page.js"></script>
 <script>
-    var tzAdmin = {
-        init: function (itemCount) {
-            $(".cpage").tzPage(itemCount, {
-                num_edge_entries: 1, //边缘页数
-                num_display_entries: 4, //主体页数
-                num_edge_entries: 5,
-                current_page: 0,
-                showGo: true,
-                showSelect: true,
-                items_per_page: 10, //每页显示X项
-                prev_text: "前一页",
-                next_text: "后一页",
-                callback: function (pageNo, psize) {//回调函数
-                }
-            });
-        }
-    };
-    tzAdmin.init();
     function changeCode(img) {
         img.src = "http://localhost:8828/admin/kaptcha/code?d=" + new Date().getTime();
     }

@@ -121,18 +121,19 @@
         var account = $("#account").val();
         var password = $("#password").val();
         var params = {acount:account,password:password};
-        loading("正在提交，请稍等...");
+//        loading("正在提交，请稍等...");
 //        alert(JSON.stringify(params));
         $.ajax({
             type:"post",
-            url:"http://localhost:8828/admin/logined",
+            url:"/admin/logined",
             data: {account: account, password: password},
             success:function(data) {
+                alert(data);
                 if (data == "company") {
-                    window.location.href = "http://localhost:8828/admin/roommanger";
+                    window.location.href = "/admin/roommanger";
                 }
                 else if(data=="person"){
-                    window.location.href = "http://localhost:8828/admin/roombook";
+                    window.location.href = "/admin/roombook";
                 }
                 else if(data == "error") {
                     $("#password").val("");

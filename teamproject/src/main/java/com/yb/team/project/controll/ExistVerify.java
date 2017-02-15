@@ -5,6 +5,7 @@ import com.yb.team.project.service.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,7 +46,7 @@ public class ExistVerify {
     }
     @ResponseBody
     @RequestMapping(value = "/licenseverify")
-    public String licenseVerify(HttpServletRequest request) {
+    public String licenseVerify( HttpServletRequest request) {
         String licenseKey = request.getParameter("licenseKey");
         String companyName = request.getParameter("companyName");
         UserTable userTable = new UserTable();
