@@ -49,14 +49,12 @@ public class CompanyRegister {
         userTable.setPhoneNumber(Long.parseLong(phoneNumber));
         userTable.setIsAdmin(false);
         userTable.setLoginerType(true);
-        userTable.setLicenseKey((request.getParameter("registration")));
         userTable.setCompanyName((request.getParameter("companyName")));
         String licenseKey = YbUtil.generateShortUuid();
         userTable.setLicenseKey(licenseKey);
-        session.setAttribute("Session_LicenseKey", licenseKey);
         boolean resultRegister = registerService.register(userTable);
         if (resultRegister) {
-            return "success";
+            return licenseKey;
         } else {
             return "error";
         }

@@ -10,5 +10,9 @@
     <result column="projector" property="projector" jdbcType="VARCHAR" />
     <result column="visible" property="visible" jdbcType="BIT" />
   </resultMap>
+  <select id="roomSearch" resultType="String">
+    SELECT meeting_room
+    FROM Management
+  </select>
 
 </mapper>

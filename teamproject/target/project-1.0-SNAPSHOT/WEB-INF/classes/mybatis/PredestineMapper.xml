@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yb.team.project.dao.PredestineMapper" >
-  <resultMap id="BaseResultMap" type="com.yb.team.project.model.Predestine" >
-    <id column="meeting_id" property="meetingId" jdbcType="INTEGER" />
-    <result column="meeting_theme" property="meetingTheme" jdbcType="VARCHAR" />
-    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
-    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
-    <result column="meeting_roomid" property="meetingRoomid" jdbcType="INTEGER" />
-    <result column="booker" property="booker" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
-  </resultMap>
+<mapper namespace="com.yb.team.project.dao.PredestineMapper">
+    <resultMap id="BaseResultMap" type="com.yb.team.project.model.Predestine">
+        <id column="meeting_id" property="meetingId" jdbcType="INTEGER"/>
+        <result column="meeting_theme" property="meetingTheme" jdbcType="VARCHAR"/>
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP"/>
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP"/>
+        <result column="meeting_roomid" property="meetingRoomid" jdbcType="INTEGER"/>
+        <result column="booker" property="booker" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="getBookByDate" resultType="com.yb.team.project.model.ShowParam" parameterType="String">
+     SELECT
+        meeting_room as address,
+        start_time as startTime,
+        end_time as endTime,
+        meeting_theme as mettingTheme,
+        date,
+        booker as bookPeople
+        FROM Predestine JOIN Management USING (meeting_roomid)
+        WHERE date= #{0}
+  </select>
 
 </mapper>

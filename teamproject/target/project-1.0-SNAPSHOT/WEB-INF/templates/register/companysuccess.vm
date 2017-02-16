@@ -20,8 +20,8 @@
 <div class="bgc3 wrap">
     <div class="container minH700 bgc1">
         <div class="m-tab1-hd clearfix">
-            <a href="http://localhost:8828/admin/personregister" class="item"><i class="icon icon-personal"></i>个人账户</a>
-            <a href="http://localhost:8828/admin/companyregister" class="item active"><i class="icon icon-company"></i>企业账户</a>
+            <a href="/admin/personregister" class="item"><i class="icon icon-personal"></i>个人账户</a>
+            <a href="/admin/companyregister" class="item active"><i class="icon icon-company"></i>企业账户</a>
         </div>
         <div class="m-tab1-con mt50">
             <div class="m-feedback">
@@ -30,7 +30,7 @@
             </div>
             <p class="tc mt50">
                 <span class="f18">授权码：</span>
-                <span class="f18 c5">guanaitong20161208Adfn009</span>
+                <span class="f18 c5" id="licenseKey"></span>
                 <span class="c6">（注：员工注册时需输入授权码获得授权）</span>
             </p>
             <div class="tc mt50">
@@ -46,4 +46,8 @@
 <script type="text/javascript" src="/resources/temp/footer.js"></script>
 <!-- footer end -->
 </body>
+<script>
+    var a = localStorage.getItem("licenseKey");
+    $("#licenseKey").html(a);
+</script>
 </html>

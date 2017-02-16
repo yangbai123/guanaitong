@@ -1,11 +1,17 @@
 
+import com.yb.team.project.dao.ManagementMapper;
+import com.yb.team.project.dao.PredestineMapper;
 import com.yb.team.project.dao.UserTableMapper;
+import com.yb.team.project.model.ShowParam;
 import com.yb.team.project.model.UserTable;
+import com.yb.team.project.service.ManagementService;
 import com.yb.team.project.service.UserServices;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/1/16.
@@ -19,6 +25,10 @@ public class Test {
     UserTableMapper userTableMapper;
     @Autowired
     UserServices userServices;
+    @Autowired
+    ManagementMapper managementMapper;
+    @Autowired
+    ManagementService managementService;
     @org.junit.Test
     public void userTableTest(){
         UserTable userTable = new UserTable();
@@ -70,5 +80,31 @@ public class Test {
         userTable.setLicenseKey("yangbai");
         UserTable userTable1 = userServices.selectByLicence(userTable);
         System.out.println(userTable1.getAccount());
+    }
+    @org.junit.Test
+    public void userTableTest6(){
+        List<String> list = managementMapper.roomSearch();
+        for (int i = 0; i <list.size() ; i++) {
+            System.out.println(list.get(i));
+        }
+    }
+    @Autowired
+    PredestineMapper predestineMapper;
+    @org.junit.Test
+    public void userTableTest7(){
+        List<String> list = managementService.roomSearch();
+        for (int i = 0; i <list.size() ; i++) {
+            System.out.println(list.get(i));
+        }
+    }
+    @org.junit.Test
+    public void userTableTest8(){
+        List<ShowParam> showParams = predestineMapper.getBookByDate("2017-02-16");
+        for (int i = 0; i < showParams.size(); i++) {
+            System.out.println(showParams.get(i).getAddress());
+            System.out.println(showParams.get(i).getDate());
+            System.out.println(showParams.get(i).getEndTime());
+            System.out.println(showParams.get(i).getBookPeople());
+        }
     }
 }

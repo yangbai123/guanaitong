@@ -189,7 +189,7 @@
             } else {
                 $.ajax({
                             type: "post",
-                            url: "http://localhost:8828/admin/emailverify",
+                            url: "/admin/emailverify",
                             async: false,
                             data: {email: email},
                             success: function (data) {
@@ -220,7 +220,7 @@
             } else {
                 $.ajax({
                             type: "post",
-                            url: "http://localhost:8828/admin/phoneverify",
+                            url: "/admin/phoneverify",
                             async: false,
                             data: {phoneNumber: phoneNumber},
                             success: function (data) {
@@ -283,21 +283,29 @@
         }
         ;
         if (isOk == 0) {
-            alert(1);
             $.ajax({
                         type: "post",
-                        url: "http://localhost:8828/admin/companyregistered",
+                        url: "/admin/companyregistered",
                         async: false,
                         data: params,
                         success: function (data) {
                             alert(data);
-                            if (data == "success") {
-                                window.location.href = "http://localhost:8828/admin/companysuccess";
-                            } else if (data == "checkerror") {
+//                            if (data == "success") {
+//                                window.location.href = "/admin/companysuccess";
+//                            } else if (data == "checkerror") {
+//                                $("#checkCode").addClass("error");
+//                                $("#checkCode").next().next().text("验证码输入有误").show();
+//                            } else {
+//                                alert("注册失败");
+//                            }
+                            if (data=="error"){
+                                alert("注册失败");
+                            }else if (data == "checkerror") {
                                 $("#checkCode").addClass("error");
                                 $("#checkCode").next().next().text("验证码输入有误").show();
-                            } else {
-                                alert("注册失败");
+                            }else {
+                                sessionStorage.setItem("licenseKey",data);
+                                window.location.href = "/admin/companysuccess";
                             }
                         }
                     }

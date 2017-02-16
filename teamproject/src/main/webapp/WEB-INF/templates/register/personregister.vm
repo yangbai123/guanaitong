@@ -207,7 +207,7 @@
             } else {
                 $.ajax({
                             type: "post",
-                            url: "http://localhost:8828/admin/emailverify",
+                            url: "/admin/emailverify",
                             async: false,
                             data: {email: email},
                             success: function (data) {
@@ -237,7 +237,7 @@
             } else {
                 $.ajax({
                             type: "post",
-                            url: "http://localhost:8828/admin/phoneverify",
+                            url: "/admin/phoneverify",
                             async: false,
                             data: {phoneNumber: phoneNumber},
                             success: function (data) {
@@ -287,12 +287,12 @@
         if (isOk == 0) {
             $.ajax({
                         type: "post",
-                        url: "http://localhost:8828/admin/personregistered",
+                        url: "/admin/personregistered",
                         async: false,
                         data: params,
                         success: function (data) {
                             if (data == "success") {
-                                window.location.href = "http://localhost:8828/admin/personsuccess";
+                                window.location.href = "/admin/personsuccess";
                             }
                         }
                     }

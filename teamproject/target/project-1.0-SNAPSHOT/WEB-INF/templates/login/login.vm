@@ -128,7 +128,6 @@
             url:"/admin/logined",
             data: {account: account, password: password},
             success:function(data) {
-                alert(data);
                 if (data == "company") {
                     window.location.href = "/admin/roommanger";
                 }

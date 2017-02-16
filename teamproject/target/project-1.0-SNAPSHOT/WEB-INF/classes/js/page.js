@@ -193,7 +193,7 @@
         var xlength=setting.xAxis.length;
         var ylength=setting.yAxis.length;
         var strCon='';
-        for(i=0;i<12;i++){
+        for(i=0;i<ylength;i++){
           var strConX='';
           for(j=0;j<xlength*setting.xStep;j++){
             strConX+='<td></td>';

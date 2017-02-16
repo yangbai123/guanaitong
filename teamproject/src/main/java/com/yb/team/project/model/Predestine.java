@@ -17,6 +17,8 @@ public class Predestine {
 
     private String status;
 
+    private Date date;
+
     public Integer getMeetingId() {
         return meetingId;
     }
@@ -30,7 +32,7 @@ public class Predestine {
     }
 
     public void setMeetingTheme(String meetingTheme) {
-        this.meetingTheme = meetingTheme == null ? null : meetingTheme.trim();
+        this.meetingTheme = meetingTheme;
     }
 
     public Date getEndTime() {
@@ -62,7 +64,7 @@ public class Predestine {
     }
 
     public void setBooker(String booker) {
-        this.booker = booker == null ? null : booker.trim();
+        this.booker = booker;
     }
 
     public String getStatus() {
@@ -70,6 +72,16 @@ public class Predestine {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+
 }
