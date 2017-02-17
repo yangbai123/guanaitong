@@ -956,7 +956,7 @@ $.tzDialog.defaults = {
 
 var ajaxTimeout = null;
 $.tzAjax = {
-	request : function(options,dataJson){
+	reqaulsest : function(options,dataJson){
 		var opts = $.extend({},{limit:true,before:function(){
 		},error:function(){
 			

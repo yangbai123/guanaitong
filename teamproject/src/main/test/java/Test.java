@@ -2,6 +2,7 @@
 import com.yb.team.project.dao.ManagementMapper;
 import com.yb.team.project.dao.PredestineMapper;
 import com.yb.team.project.dao.UserTableMapper;
+import com.yb.team.project.model.RoomMessage;
 import com.yb.team.project.model.ShowParam;
 import com.yb.team.project.model.UserTable;
 import com.yb.team.project.service.ManagementService;
@@ -105,6 +106,14 @@ public class Test {
             System.out.println(showParams.get(i).getDate());
             System.out.println(showParams.get(i).getEndTime());
             System.out.println(showParams.get(i).getBookPeople());
+        }
+    }
+    @org.junit.Test
+    public void userTableTest9(){
+        List<RoomMessage> roomMessages =  managementMapper.roomMessage("平台中心会议室");
+        System.out.println(roomMessages.size());
+        for (RoomMessage a:roomMessages) {
+            System.out.println(a.getMeetingRoom());
         }
     }
 }

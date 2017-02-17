@@ -65,18 +65,18 @@
                     <div class="col-offset-4">
                         <input type="text" class="u-txt date fl" onfocus="SelectDate(this, 0);" id="bookdate">
                         <div class="u-select j-select1 fl ml10" style="width: 65px;">
-                            <select  size="3" name="province" id="province"   multiple="multiple" >
-                                <option value="1">08:00</option>
-                                <option value="1">08:30</option>
-                                <option value="1">09:00</option>
-                                <option value="1">09:30</option>
-                                <option value="1">10:00</option>
-                                <option value="1">10:30</option>
+                            <select name="starttime" id="starttime" multiple="multiple">
+                                <option>08:00</option>
+                                <option>08:30</option>
+                                <option>09:00</option>
+                                <option>09:30</option>
+                                <option>10:00</option>
+                                <option>10:30</option>
                             </select>
                         </div>
                         <span class="fl ml6 mr6">~</span>
                         <div class="u-select j-select2 fl ml10" style="width: 65px;">
-                            <select name="province" id="province">
+                            <select name="endtime" id="endtime">
                                 <option>12:00</option>
                                 <option>11:00</option>
                                 <option>10:00</option>
@@ -89,26 +89,19 @@
                 <div class="form-group mb4" style="z-index: 3;margin-top: 15px;margin-bottom: 15px">
                     <label class="control-label col-4">地点</label>
                     <div class="col-offset-4 ">
-                        <div class="u-select j-select1 fl" style="width: 100px;">
-                            <select size="3" name="province" id="province" style="height: 100px">
+                        <div class="u-select j-select1 fl" style="width: 100px;" id="meetingroom">
+                            <select name="place" id="place" style="height: 100px">
                                 <option>08:00</option>
                                 <option>08:30</option>
                                 <option>09:00</option>
                                 <option>09:30</option>
-                                <option>10:00</option>
-                                <option>10:30</option>
-                                <option>10:30</option>
-                                <option>10:30</option>
-                                <option>10:30</option>
-                                <option>10:30</option>
-                                <option>10:30</option>
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-4">设备</label>
-                    <div class="col-offset-4 m-checkbox-horizontal">
+                    <div class="col-offset-4 m-checkbox-horizontal" id="device">
                         <label class="u-checkbox checked"><input type="checkbox" checked=""><i
                                 class="ico"></i>画板</label>
                         <label class="u-checkbox"><input type="checkbox"><i class="ico"></i>笔记本电脑</label>
@@ -197,15 +190,42 @@
                 yb_book();
             }
         });
+        yb_book();
         $('.u-select').select();
         $('.u-checkbox').checkbox();
-        yb_book();
+        var room = $('#place').val();
+//        alert(room);
+//        $.getJSON("/admin/roommessage",{room:room},function (data) {
+//            alert(data);
+//        });
+        $.ajax({
+            type: "post",
+            url: "/admin/roommessage",
+            async: false,
+            data: {room: room},
+            success: function (data) {
+                var startTime = data.startTime;
+                var endTime = data.endTime;
+                var start = startTime.split(":");
+                var end = endTime.split(":");
+                var count = end[0]-start[0];
+                alert(count);
+                $("#device").empty();
+                $.each(data.deviceNames, function (i, item) {
+//                    alert(item);
+                    $("#device").append("<label class=" + "u-checkbox" + "><input type=" +"checkbox" + "><i class=" + "ico" + "></i>" + item + "</label>");
+                });
+                $('.u-checkbox').checkbox();
+
+            }
+        });
     })
     function bookMetting() {
         dialog.init({
             'w': 735,
             'h': 502,
             'layer': '.lay-book'
+
         })
     }
     function bookSuccess() {
@@ -218,13 +238,24 @@
     function yb_book() {
         var date = $('.date-txt').text();
         $("#bookdate").val(date);
-        var roomData;
         $.ajaxSettings.async = false;
+        var roomData;
         $.get("/admin/roomsearch", function (data) {
+//            alert(data);
             roomData = data;
         });
+//        alert(roomData.length);
+        $("#place").empty();
+        for (var i = 0, len = roomData.length; i < len; i++) {
+//            alert(roomData[i]);
+//            html += "<option>" + roomData[i] + "</option>";
+            $("#place").append("<option >" + roomData[i] + "</option>"); //为Select追加一个Option(下拉项)
+        }
+        ;
+//        $("#mettingroom").html(html);
         var bookData;
         $.get("/admin/booksearch", {date: date}, function (data) {
+//            alert(data);
             bookData = data;
         });
 
@@ -241,5 +272,16 @@
             ]
         });
     }
+    //    function yb_room(){
+    //        var date = $('.date-txt').text();
+    //        $.ajaxSettings.async = false;
+    //        var roomData;
+    //        $.get("/admin/roomsearch", function (data) {
+    ////            alert(data);
+    //            roomData = data;
+    //        });
+    //        $("#place").empty();
+    //        $("#place").append("<option>Text</option>");
+    //    }
 </script>
 </html>

@@ -15,7 +15,6 @@
 //
 //import com.google.code.kaptcha.Constants;
 //import com.google.code.kaptcha.Producer;
-//import com.google.code.kaptcha.impl.DefaultNoise;
 //
 //
 ///**

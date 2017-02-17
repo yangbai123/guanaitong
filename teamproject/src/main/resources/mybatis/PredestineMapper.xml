@@ -13,12 +13,12 @@
     <select id="getBookByDate" resultType="com.yb.team.project.model.ShowParam" parameterType="String">
      SELECT
         meeting_room as address,
-        start_time as startTime,
-        end_time as endTime,
+        a.start_time as startTime,
+        a.end_time as endTime,
         meeting_theme as mettingTheme,
         date,
         booker as bookPeople
-        FROM Predestine JOIN Management USING (meeting_roomid)
+        FROM Predestine a JOIN Management b USING (meeting_roomid)
         WHERE date= #{0}
   </select>
 

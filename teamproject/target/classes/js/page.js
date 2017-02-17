@@ -112,7 +112,7 @@
 
         init();
 
-      })  
+      })
       return this;
     },
     //刷新自定义select
