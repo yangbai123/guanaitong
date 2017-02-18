@@ -1,7 +1,8 @@
+var userName = sessionStorage.getItem("userName");
 var siteNavHTML = '<div class="site-nav">'+
           '<div class="container">'+
             '<ul class="site-nav-r fr">'+
-              '<li>您好, $session.getAttribute("Session_UserName")</li>'+
+              '<li id="usermessage">'+ '你好，'+userName+' </li>'+
               '<li><span>|</span></li>'+
               '<li><a href="#">退出</a></li>'+
             '</ul>'+

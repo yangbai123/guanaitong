@@ -17,11 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 public class ExistVerify {
     @Autowired
     UserServices userServices;
-
     @ResponseBody
     @RequestMapping(value = "/emailverify")
-    public String emailVerify(HttpServletRequest request) {
-        String email = request.getParameter("email");
+    public String emailVerify(@RequestParam String email, HttpServletRequest request) {
         UserTable userTable = new UserTable();
         userTable.setEmail(email);
         UserTable resultUserTable = userServices.selectByEmail(userTable);
@@ -33,9 +31,8 @@ public class ExistVerify {
     }
     @ResponseBody
     @RequestMapping(value = "/phoneverify")
-    public String phoneVerify(HttpServletRequest request) {
-        String phoneNumber = request.getParameter("phoneNumber");
-        UserTable userTable = new UserTable();
+    public String phoneVerify(@RequestParam String phoneNumber, HttpServletRequest request) {
+         UserTable userTable = new UserTable();
         userTable.setPhoneNumber(Long.parseLong(phoneNumber));
         UserTable resultUserTable = userServices.selectByPhone(userTable);
         if (resultUserTable != null) {

@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface PredestineMapper {
     List<ShowParam> getBookByDate(String date);
-
+    List<ShowParam> BookByPerson(String date,String room);
 }

@@ -1,6 +1,7 @@
 package com.yb.team.project.model;
 
 public class UserTable {
+
     private String loginId;
 
     private String account;
@@ -18,6 +19,16 @@ public class UserTable {
     private Boolean loginerType;
 
     private String registration;
+
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public String getCompanyName() {
         return companyName;

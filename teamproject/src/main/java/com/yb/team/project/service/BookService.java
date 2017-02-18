@@ -20,7 +20,9 @@ public class BookService {
     public List<ShowParam> bookSearch(String date){
         return  predestineMapper.getBookByDate(date);
     }
-    @Autowired
-    ManagementMapper managementMapper;
+    public List<ShowParam> personBook(String date,String room){
+        return  predestineMapper.BookByPerson(date,room);
+    }
+
 
 }

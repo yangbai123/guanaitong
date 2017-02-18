@@ -128,19 +128,20 @@
             url:"/admin/logined",
             data: {account: account, password: password},
             success:function(data) {
-                if (data == "company") {
+                if (data.message == "company") {
+                    sessionStorage.setItem("userName",data.account);
                     window.location.href = "/admin/roommanger";
                 }
-                else if(data=="person"){
+                else if(data.message=="person"){
+                    sessionStorage.setItem("userName",data.account);
                     window.location.href = "/admin/roombook";
                 }
-                else if(data == "error") {
+                else if(data.message == "error") {
                     $("#password").val("");
-                    $("#account").val("");
-                    $("#account").focus();
+                    $("#account").select();
                     loading("请输入正确的用户名和密码");
                 }
-                else if(data=="empty"){
+                else if(data.message=="empty"){
                     $("#account").focus();
                     loading("用户名和密码不能为空");
             }}

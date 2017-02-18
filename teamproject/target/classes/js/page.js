@@ -34,7 +34,7 @@
       });
     },
     //select
-    select: function(opt){
+    select1: function(opt){
       this.each(function(){
         var oOriginSelect = $(this).find('select');//原生的select
         var aOriginOptions = oOriginSelect.find('option');//原生所有option

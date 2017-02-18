@@ -42,11 +42,12 @@ public class UserBook {
 
     @ResponseBody
     @RequestMapping(value = "/booksearch")
-    public List<ShowParam> bookSearch(@RequestParam String date) {
+    public List<ShowParam> bookSearch(@RequestParam String date, @RequestParam String userName) {
         System.out.println(date);
+        System.out.println(userName);
         List<ShowParam> showParams = bookService.bookSearch(date);
         for (ShowParam showParam : showParams) {
-            if (showParam.getBookPeople().equals("yangbai")) {
+            if (showParam.getBookPeople().equals(userName)) {
                 showParam.setId("mybook");
             } else {
                 showParam.setId("booked");
@@ -56,6 +57,29 @@ public class UserBook {
             }
         }
         return showParams;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/personbook")
+    public String personBook(@RequestParam String date, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String place) {
+        List<ShowParam> showParams = bookService.personBook(date, place);
+        String[] sTime = startTime.split(":");
+        int[] isTime = new int[sTime.length];
+        String[] eTime = endTime.split(":");
+        int[] ieTime = new int[eTime.length];
+        for (int i = 0; i < 2 ; i++) {
+            isTime[i] =Integer.parseInt(sTime[i]);
+            ieTime[i] = Integer.parseInt(eTime[i]);
+        }
+
+        int isOk = 0;
+        for (ShowParam showparam : showParams) {
+            String[] sParamTime = showparam.getStartTime().split(":");
+            String[] eParamTime = showparam.getStartTime().split(":");
+            if (isTime[0]<Integer.parseInt(eParamTime[0])){
+                   
+            }
+        }
     }
 
     @ResponseBody

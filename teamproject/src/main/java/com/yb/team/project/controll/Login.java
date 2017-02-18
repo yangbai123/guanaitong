@@ -27,12 +27,11 @@ public class Login {
 
     @ResponseBody
     @RequestMapping(value = "/logined",method = RequestMethod.POST)
-    public String getLogin( HttpServletRequest request, HttpSession session) {
-        String account = request.getParameter("account");
-        String password = request.getParameter("password");
+    public UserTable getLogin(@RequestParam String account,@RequestParam String password, HttpServletRequest request, HttpSession session) {
+        UserTable resultUserTable = new UserTable();
         if (YbUtil.isNotEmpty(account) && YbUtil.isNotEmpty(password)) {
             UserTable userTable = new UserTable();
-            UserTable resultUserTable;
+
             if (YbUtil.isPhoneLegal(account)) {
                 userTable.setPhoneNumber(Long.parseLong(account));
                 userTable.setPassword(password);
@@ -44,22 +43,27 @@ public class Login {
                 resultUserTable = userServices.getLoginByEmail(userTable);
             }
             else {
-                return "error";
+                userTable.setMessage("error");
+                return userTable;
             }
             if (resultUserTable != null) {
                 session.setAttribute("Session_User", resultUserTable);
                 session.setAttribute("Session_UserName", resultUserTable.getAccount());
                 if (resultUserTable.getIsAdmin() == true || resultUserTable.getLoginerType() == true) {
-                    return "company";
+                    resultUserTable.setMessage("company");
+                    return resultUserTable;
                 } else {
-                    return "person";
+                    resultUserTable.setMessage("person");
+                    return resultUserTable;
                 }
             } else {
-                return "error";
+                resultUserTable.setMessage("error");
+                return resultUserTable;
             }
         }
         else {
-            return "empty";
+            resultUserTable.setMessage("empty");
+            return resultUserTable;
         }
     }
 }

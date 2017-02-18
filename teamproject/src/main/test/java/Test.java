@@ -100,12 +100,9 @@ public class Test {
     }
     @org.junit.Test
     public void userTableTest8(){
-        List<ShowParam> showParams = predestineMapper.getBookByDate("2017-02-16");
+        List<ShowParam> showParams = predestineMapper.BookByPerson("2017-02-18","平台中心会议室");
         for (int i = 0; i < showParams.size(); i++) {
-            System.out.println(showParams.get(i).getAddress());
-            System.out.println(showParams.get(i).getDate());
             System.out.println(showParams.get(i).getEndTime());
-            System.out.println(showParams.get(i).getBookPeople());
         }
     }
     @org.junit.Test

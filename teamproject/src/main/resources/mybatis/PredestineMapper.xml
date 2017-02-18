@@ -20,6 +20,14 @@
         booker as bookPeople
         FROM Predestine a JOIN Management b USING (meeting_roomid)
         WHERE date= #{0}
-  </select>
+    </select>
+    <select id="BookByPerson" resultType="com.yb.team.project.model.ShowParam" parameterType="String">
+        SELECT
+        a.start_time as startTime,
+        b.end_time as endTime
+        FROM Predestine a JOIN Management b USING (meeting_roomid)
+        WHERE date= #{0} AND meeting_room=#{1}
+    </select>
+
 
 </mapper>
