@@ -20,6 +20,33 @@
         booker as bookPeople
         FROM Predestine a JOIN Management b USING (meeting_roomid)
         WHERE date= #{0}
-  </select>
+    </select>
+    <select id="bookByPerson" resultType="com.yb.team.project.model.ShowParam" parameterType="String">
+        SELECT
+        a.start_time as startTime,
+        a.end_time as endTime
+        FROM Predestine a JOIN Management b USING (meeting_roomid)
+        WHERE date= #{0} AND meeting_room=#{1}
+    </select>
+    <insert id="bookSuccess"  parameterType="com.yb.team.project.model.Predestine" useGeneratedKeys="true" keyProperty="meeting_id">
+        INSERT INTO Predestine (
+            meeting_theme,
+            start_time,
+            end_time,
+            meeting_roomid,
+            booker,
+            date,
+            device_name)
+            VALUES(
+            #{meetingTheme},
+            #{startTime},
+            #{endTime},
+            #{meetingRoomid},
+            #{booker},
+            #{date},
+            #{deviceName}
+            )
+    </insert>
+
 
 </mapper>

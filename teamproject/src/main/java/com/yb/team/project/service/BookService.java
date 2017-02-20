@@ -21,7 +21,10 @@ public class BookService {
         return  predestineMapper.getBookByDate(date);
     }
     public List<ShowParam> personBook(String date,String room){
-        return  predestineMapper.BookByPerson(date,room);
+        return  predestineMapper.bookByPerson(date,room);
+    }
+    public int bookSuccess(Predestine predestine){
+        return predestineMapper.bookSuccess(predestine);
     }
 
 

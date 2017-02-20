@@ -7,7 +7,13 @@
     <title>会议室预定</title>
     <link rel="stylesheet" type="text/css" href="/resources/css/common.css">
     <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/resources/sg/css/sganimate.css">
+    <link rel="stylesheet" type="text/css" href="/resources/sg/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/resources/sg/css/tz_magic.css">
+    <link rel="stylesheet" type="text/css" href="/resources/sg/css/tz-loading.css">
     <script type="text/javascript" src="/resources/js/jquery.js"></script>
+    <script type="text/javascript" src="/resources/sg/sg.js"></script>
+    <script type="text/javascript" src="/resources/sg/sgutil.js"></script>
 </head>
 
 <body>
@@ -57,7 +63,7 @@
                 <div class="form-group">
                     <label class="control-label col-4"><i>*</i>主题</label>
                     <div class="col-offset-4">
-                        <input class="u-txt" type="text" style="width: 495px;" id="theme">
+                        <input class="u-txt" type="text" style="width: 400px;" id="theme">
                     </div>
                 </div>
                 <div class="form-group mb4" style="z-index: 3;">
@@ -77,8 +83,8 @@
                                     style="height: 36px;border-color: #E5E5E5;width:60px;">
                             </select>
                         </div>
-                        <label class="u-checkbox ml10 checked"><input type="checkbox" checked=""><i class="ico"></i>全天事件</label><br>
-                        <span class="f12 c7 hide">抱歉，该时段已被预定</span>
+                        <label class="u-checkbox ml10 checked"><input type="checkbox" checked=""><i class="ico"></i>全天事件</label>
+                        <span class="f12 c7 hide" id="isbooked" style="padding-left: 10px">抱歉，该时段已被预定</span>
                     </div>
                 </div>
                 <div class="form-group mb4" style="z-index: 3;margin-top: 15px;margin-bottom: 15px">
@@ -102,32 +108,7 @@
                         <label class="u-checkbox"><input type="checkbox"><i class="ico"></i>投影仪</label>
                     </div>
                 </div>
-                <div class="form-group" style="z-index: 2;">
-                    <label class="control-label col-4">提醒</label>
-                    <div class="col-offset-4">
-                        <div class="u-select j-select1 fl" style="width: 100px;">
-                            <select name="province" id="province">
-                                <option>10分钟前</option>
-                                <option>15分钟前</option>
-                                <option>30分钟前</option>
-                                <option>1小时前</option>
-                                <option>2小时前</option>
-                                <option>6小时前</option>
-                                <option>12小时前</option>
-                                <option>18小时前</option>
-                                <option>1天前</option>
-                                <option>2天前</option>
-                            </select>
-                        </div>
 
-                        <label class="control-label col-5 ml20">提醒方式：</label>
-                        <div class="col-offset-5">
-                            <label class="u-checkbox ml10"><input type="checkbox"><i class="ico"></i>邮件</label>
-                            <label class="u-checkbox ml10"><input type="checkbox"><i class="ico"></i>短信</label>
-                        </div>
-
-                    </div>
-                </div>
             </div>
         </div>
         <div class="pop-ft mt50">
@@ -139,26 +120,8 @@
         <a href="javascript:;" class="u-pop-close close">&#xe600;</a>
     </div>
 </div>
-<div class="layer-con layer-book-success">
-    <div class="popupLayer">
-        <div class="pop-hd"></div>
-        <div class="pop-bd">
-            <div class="m-feedback mt50">
-                <i class="iconfont success">&#xe612;</i>
-                <h2 class="h2 fn mt6">预定成功</h2>
-            </div>
-            <div class="layer-information mt20">
-                <p class="f12 c3 lh20">预定人：欧阳菲菲<br>地点：平台中心会议室<br>主题：项目会议讨论<br>时间：2016-11-20 14:30~16:0</p>
-            </div>
-        </div>
-        <div class="pop-ft mt50">
-            <div class="m-btn-group tc">
-                <a href="#" class="u-btn u-btn-primary">确定</a>
-                <a href="#" class="u-btn u-btn-default close" onclick="dialog.closePop()">取消</a>
-            </div>
-        </div>
-        <a href="javascript:;" class="u-pop-close close">&#xe600;</a>
-    </div>
+<div class="layer-con layer-book-success" id="booksuccess">
+
 </div>
 </body>
 <script src="/resources/js/calendar.js"></script>
@@ -190,15 +153,15 @@
     })
     function bookMetting() {
         dialog.init({
-            'w': 735,
-            'h': 502,
+            'w': 600,
+            'h': 400,
             'layer': '.lay-book'
         })
     }
     function bookSuccess() {
         dialog.init({
-            'w': 735,
-            'h': 502,
+            'w': 600,
+            'h': 400,
             'layer': '.layer-book-success'
         })
     }
@@ -218,7 +181,7 @@
         ;
         var bookData;
         var userName = sessionStorage.getItem("userName");
-        $.get("/admin/booksearch", {userName:userName,date: date}, function (data) {
+        $.get("/admin/booksearch", {userName: userName, date: date}, function (data) {
             bookData = data;
         });
 
@@ -248,6 +211,7 @@
                 var start = startTime.split(":");
                 var end = endTime.split(":");
                 var count = (end[0] - start[0]) * 2 + 1;
+                var booker = sessionStorage.getItem("userName");
                 if (end[1] < start[1]) {
                     count++;
                 }
@@ -285,35 +249,97 @@
                 $("#device").empty();
                 $.each(data.deviceNames, function (i, item) {
                     if (item != null) {
-                        $("#device").append("<label class=" + "u-checkbox"+"><input value='"+ item+"' type=" + "checkbox" + "><i class=" + "ico" + "></i>" + item + "</label>");
+                        $("#device").append("<label class=" + "u-checkbox" + "><input value='" + item + "' type=" + "checkbox" + "><i class=" + "ico" + "></i>" + item + "</label>");
                     }
                 });
                 $('.u-checkbox').checkbox();
             }
         });
     }
-    function bookRoom(){
+    function bookRoom() {
+        var booker = sessionStorage.getItem("userName");
         var meetingTheme = $("#theme").val();
         var date = $("#bookdate").val();
         var startTime = $("#starttime").find("option:selected").text();
-        var endTime =$("#endtime").find("option:selected").text()
+        var endTime = $("#endtime").find("option:selected").text()
         var place = $("#place").find("option:selected").text();
         var a = $("#device").find("input");
-        var device = [];
-        alert($(a[0]).is(":checked"));
-        for (var i=0 ;i< a.length;i++){
-            if ($(a[i]).is(":checked")){
+        var device = "";
+//        alert($(a[0]).is(":checked"));
+        if(isEmpty(meetingTheme)){
+            loading("会议主题不能为空");
+            return;
+        }
+        if(startTime>endTime){
+            loading("开始时间不能大于结束时间");
+            return;
+        }
+        for (var i = 0; i < a.length; i++) {
+            if ($(a[i]).is(":checked")) {
                 var data = $(a[i]).attr("value");
-                device.push(data);
+                if (i >= 1) {
+                    device = device + "," + data;
+                } else {
+                    device += data;
+                }
             }
-        };
+        }
+        ;
         $.ajax({
             type: "post",
             url: "/admin/personbook",
             async: false,
-            data: {date:date,startTime:startTime,endTime:endTime,place:place},
+            data: {date: date, startTime: startTime, endTime: endTime, place: place},
             success: function (data) {
-
+                if (data == "success") {
+                    $("#isbooked").addClass("hide");
+                    $.ajax({
+                        type: "post",
+                        url: "/admin/booksuccess",
+                        async: false,
+                        data: {
+                            date: date,
+                            startTime: startTime,
+                            endTime: endTime,
+                            place: place,
+                            meetingTheme: meetingTheme,
+                            booker:booker,
+                            device:device
+                        },
+                        success: function (data) {
+                            if(data=="success"){
+                                $("#theme").val("");
+                                $("#booksuccess").html("<div class=\"popupLayer\">"+
+                                        "        <div class=\"pop-hd\"></div>"+
+                                        "        <div class=\"pop-bd\">"+
+                                        "            <div class=\"m-feedback mt50\">"+
+                                        "                <i class=\"iconfont success\">&#xe612;</i>"+
+                                        "                <h2 class=\"h2 fn mt6\">预定成功</h2>"+
+                                        "            </div>"+
+                                        "            <div class=\"layer-information mt20\">"+
+                                        "                <p class=\"f12 c3 lh20\">预定人:"+booker+"<br>地点："+place +"<br>主题："+meetingTheme+"<br>时间："+date+ "  "+startTime+"~"+endTime+"</p>"+
+                                        "            </div>"+
+                                        "        </div>"+
+                                        "        <div class=\"pop-ft mt50\">"+
+                                        "            <div class=\"m-btn-group tc\">"+
+                                        "                <a href=\"#\" class=\"u-btn u-btn-primary\" onclick=\"dialog.closePop()\">确定</a>"+
+                                        "            </div>"+
+                                        "        </div>"+
+                                        "        <a href=\"javascript:;\" class=\"u-pop-close close\">&#xe600;</a>"+
+                                        "    </div>");
+                                $('#booktable').empty();
+                                $('.date-txt').html(date);
+                                yb_book();
+                                bookSuccess();
+                            }else if (data=="error"){
+                                loading("未知错误，预定失败");
+                            }
+                        }
+                    });
+                } else if (data == "error") {
+//                    $("#isbooked").removeClass("hide");
+                    loading("当前时间已被预订")
+                }
             }
         });
     }

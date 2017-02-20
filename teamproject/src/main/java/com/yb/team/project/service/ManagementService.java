@@ -20,4 +20,7 @@ public class ManagementService {
     public List<RoomMessage> roomMessage(String name){
         return  managementMapper.roomMessage(name);
     }
+    public int roomIdSearch(String room){
+        return managementMapper.roomIdSearch(room);
+    }
 }

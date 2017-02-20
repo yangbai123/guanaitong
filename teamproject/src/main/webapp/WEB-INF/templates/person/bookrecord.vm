@@ -165,7 +165,7 @@
 <script src="/js/page.js"></script>
 <script>
     $(function(){
-        $('.u-select').select();
+        $('.u-select').select1();
     })
     //弹出层-取消预定
     function cancelReservation(){

@@ -7,17 +7,24 @@ public class Predestine {
 
     private String meetingTheme;
 
-    private Date endTime;
+    private String endTime;
 
-    private Date startTime;
+    private String startTime;
 
     private Integer meetingRoomid;
 
     private String booker;
 
-    private String status;
+    private String date;
 
-    private Date date;
+    private String deviceName;
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
+    }
 
     public Integer getMeetingId() {
         return meetingId;
@@ -33,22 +40,6 @@ public class Predestine {
 
     public void setMeetingTheme(String meetingTheme) {
         this.meetingTheme = meetingTheme;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
     }
 
     public Integer getMeetingRoomid() {
@@ -67,21 +58,29 @@ public class Predestine {
         this.booker = booker;
     }
 
-    public String getStatus() {
-        return status;
+
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
-    public Date getDate() {
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
-
-
 }

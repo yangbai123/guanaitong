@@ -2,6 +2,7 @@
 import com.yb.team.project.dao.ManagementMapper;
 import com.yb.team.project.dao.PredestineMapper;
 import com.yb.team.project.dao.UserTableMapper;
+import com.yb.team.project.model.Predestine;
 import com.yb.team.project.model.RoomMessage;
 import com.yb.team.project.model.ShowParam;
 import com.yb.team.project.model.UserTable;
@@ -93,17 +94,22 @@ public class Test {
     PredestineMapper predestineMapper;
     @org.junit.Test
     public void userTableTest7(){
-        List<String> list = managementService.roomSearch();
-        for (int i = 0; i <list.size() ; i++) {
-            System.out.println(list.get(i));
-        }
+        Predestine predestine = new Predestine();
+        predestine.setMeetingTheme("我好爱你");
+        predestine.setStartTime("12：00");
+        predestine.setEndTime("22:00");
+        predestine.setBooker("yangbai");
+        predestine.setMeetingRoomid(2);
+        predestine.setDate("2017-02-19");
+        predestine.setDeviceName("花瓣,投影仪");
+//        predestineMapper.BookSuccess(predestine);
     }
     @org.junit.Test
     public void userTableTest8(){
-        List<ShowParam> showParams = predestineMapper.BookByPerson("2017-02-18","平台中心会议室");
-        for (int i = 0; i < showParams.size(); i++) {
-            System.out.println(showParams.get(i).getEndTime());
-        }
+////        List<ShowParam> showParams = predestineMapper.BookByPerson("2017-02-18","平台中心会议室");
+//        for (int i = 0; i < showParams.size(); i++) {
+//            System.out.println(showParams.get(i).getEndTime());
+//        }
     }
     @org.junit.Test
     public void userTableTest9(){
@@ -112,5 +118,9 @@ public class Test {
         for (RoomMessage a:roomMessages) {
             System.out.println(a.getMeetingRoom());
         }
+    }
+    @org.junit.Test
+    public void userTableTest10(){
+        System.out.println(managementMapper.roomIdSearch("招待室2"));
     }
 }
