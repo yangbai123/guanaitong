@@ -24,5 +24,4 @@ public class CompanyManger {
         return "/company/setting";
     }
 
-
 }

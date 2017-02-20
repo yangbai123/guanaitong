@@ -20,11 +20,25 @@ public class Login {
     @Autowired
     private UserServices userServices;
 
+    /**
+     * 主页
+     * @return
+     */
+
     @RequestMapping(value = "/login")
     public String index() {
         return "/login/login";
     }
 
+
+    /**
+     *登陆验证
+     * @param account
+     * @param password
+     * @param request
+     * @param session
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/logined",method = RequestMethod.POST)
     public UserTable getLogin(@RequestParam String account,@RequestParam String password, HttpServletRequest request, HttpSession session) {

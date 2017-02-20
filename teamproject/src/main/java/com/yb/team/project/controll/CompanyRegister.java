@@ -7,6 +7,7 @@ import com.yb.team.project.until.YbUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,22 +21,34 @@ public class CompanyRegister {
     @Autowired
     RegisterService registerService;
 
+    /**
+     * 企业注册界面
+     * @return
+     */
     @RequestMapping(value = "/companyregister")
     public String companyregister() {
         return "/register/companyregister";
     }
 
+    /**
+     * 企业注册成功界面
+     * @return
+     */
     @RequestMapping(value = "/companysuccess")
     public String reisterSuccess() {
         return "/register/companysuccess";
     }
 
+    /**
+     *企业注册的实现和验证
+     * @param request
+     * @param session
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/companyregistered")
-    public String personregistered(HttpServletRequest request, HttpSession session) {
-        String checkCode = request.getParameter("checkCode");
-        String email = request.getParameter("email");
-        String phoneNumber = request.getParameter("phoneNumber");
+    public String personregistered(@RequestParam String checkCode,@RequestParam String email,@RequestParam String phoneNumber,
+                                   HttpServletRequest request, HttpSession session) {
         System.out.println(checkCode);
         String sessionCode = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
         System.out.println(sessionCode);

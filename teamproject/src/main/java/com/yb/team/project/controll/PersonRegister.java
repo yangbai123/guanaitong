@@ -20,15 +20,29 @@ public class PersonRegister {
     @Autowired
     UserServices userServices;
 
+    /**
+     * 个人注册界面
+     * @return
+     */
     @RequestMapping(value = "/personregister")
     public String personRegister() {
         return "/register/personregister";
     }
 
+    /**
+     * 个人注册成功界面
+     * @return
+     */
     @RequestMapping(value = "/personsuccess")
     public String reisterSuccess() {
         return "/register/personsuccess";
     }
+
+    /**
+     * 个人注册的实现和验证
+      * @param request
+     * @return
+     */
 
     @ResponseBody
     @RequestMapping(value = "/personregistered")

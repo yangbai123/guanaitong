@@ -3,6 +3,7 @@ package com.yb.team.project.model;
 import java.util.Date;
 
 /**
+ * 用户信息的返回界面
  * Created by Administrator on 2017/2/16.
  */
 public class ShowParam {

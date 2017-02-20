@@ -34,17 +34,32 @@ public class UserBook {
     @Autowired
     BookService bookService;
 
+    /**
+     * 用户预定界面
+     * @return
+     */
     @RequestMapping(value = "/roombook")
     public String roomBook() {
         return "/person/roombook";
     }
 
+    /**
+     * 查询所有的会议室的名称
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/roomsearch")
     public List<String> roomSearch(HttpServletRequest request) {
         return managementService.roomSearch();
     }
 
+    /**
+     * 获取当前用户，在指定日期的预定记录
+     * @param date
+     * @param userName
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/booksearch")
     public List<ShowParam> bookSearch(@RequestParam String date, @RequestParam String userName) {
@@ -62,6 +77,14 @@ public class UserBook {
         return showParams;
     }
 
+    /**
+     * 判断指定会议室的指定时间是否被占用
+     * @param date
+     * @param startTime
+     * @param endTime
+     * @param place
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/personbook")
     public String personBook(@RequestParam String date, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String place) {
@@ -94,6 +117,11 @@ public class UserBook {
         }
     }
 
+    /**
+     * 获取会议室的信息
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/roommessage")
     public RoomMessage roomMessage(HttpServletRequest request) {
@@ -111,11 +139,17 @@ public class UserBook {
         return returnData;
     }
 
-    @RequestMapping(value = "/bookrecord")
-    public String boolRecord() {
-        return "/person/bookrecord";
-    }
-
+    /**
+     * 根据前台发来的数据进行插入操作
+     * @param date
+     * @param startTime
+     * @param endTime
+     * @param place
+     * @param meetingTheme
+     * @param booker
+     * @param device
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/booksuccess")
 
@@ -137,6 +171,15 @@ public class UserBook {
             return "success";
         else
             return "error";
+    }
+
+    /**
+     * 预定记录界面
+     * @return
+     */
+    @RequestMapping(value = "/bookrecord")
+    public String boolRecord() {
+        return "/person/bookrecord";
     }
 
 }

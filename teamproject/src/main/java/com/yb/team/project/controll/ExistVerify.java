@@ -17,6 +17,14 @@ import javax.servlet.http.HttpServletRequest;
 public class ExistVerify {
     @Autowired
     UserServices userServices;
+
+
+    /**
+     * 注册的邮箱的是否存在验证
+      * @param email
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/emailverify")
     public String emailVerify(@RequestParam String email, HttpServletRequest request) {
@@ -29,6 +37,13 @@ public class ExistVerify {
             return "false";
         }
     }
+
+    /**
+     *    注册的电话是否存在的验证
+     * @param phoneNumber
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/phoneverify")
     public String phoneVerify(@RequestParam String phoneNumber, HttpServletRequest request) {
@@ -41,6 +56,12 @@ public class ExistVerify {
             return "false";
         }
     }
+
+    /**
+     * 授权码是否存在的验证
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/licenseverify")
     public String licenseVerify( HttpServletRequest request) {
