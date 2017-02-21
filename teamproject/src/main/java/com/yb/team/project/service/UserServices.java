@@ -12,22 +12,37 @@ import org.springframework.stereotype.Service;
 public class UserServices {
     @Autowired
     UserTableMapper userTableMapper;
-    public UserTable getLoginByPhone(UserTable userTable){
+
+    public UserTable getLoginByPhone(UserTable userTable) {
         return userTableMapper.getLoginByPhone(userTable);
     }
-    public UserTable getLoginByEmail(UserTable userTable){
+
+    public UserTable getLoginByEmail(UserTable userTable) {
         return userTableMapper.getLoginByEmail(userTable);
     }
-    public Boolean personRegister(UserTable userTable){
+
+    public Boolean personRegister(UserTable userTable) {
         return userTableMapper.register(userTable);
     }
-    public UserTable selectByEmail(UserTable userTable){
-        return  userTableMapper.selectByEmail(userTable);
+
+    public UserTable selectByEmail(UserTable userTable) {
+        return userTableMapper.selectByEmail(userTable);
     }
-    public UserTable selectByPhone(UserTable userTable){
-        return  userTableMapper.selectByPhone(userTable);
+
+    public UserTable selectByPhone(UserTable userTable) {
+        return userTableMapper.selectByPhone(userTable);
     }
-    public UserTable selectByLicence(UserTable userTable){
-        return  userTableMapper.selectByLicencekey(userTable);
+
+    public UserTable selectByLicence(UserTable userTable) {
+        return userTableMapper.selectByLicencekey(userTable);
     }
+
+    public UserTable selectByAccount(UserTable userTable) {
+        return userTableMapper.selectByAccount(userTable);
+    }
+    public UserTable selectByCompanyName(String companyName) {
+        return userTableMapper.selectByCompanyName(companyName
+        );
+    }
+    ;
 }

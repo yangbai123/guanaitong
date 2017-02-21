@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface PredestineMapper {
-    List<ShowParam> getBookByDate(String date);
-    List<ShowParam> bookByPerson(String date,String room);
+    List<ShowParam> getBookByDate(String date,int companyId);
+    List<ShowParam> bookByPerson(String date,String room,int companyId);
     int bookSuccess(Predestine predestine);
 }

@@ -17,11 +17,11 @@ import java.util.List;
 public class BookService {
     @Autowired
     PredestineMapper predestineMapper;
-    public List<ShowParam> bookSearch(String date){
-        return  predestineMapper.getBookByDate(date);
+    public List<ShowParam> bookSearch(String date,int companyId){
+        return  predestineMapper.getBookByDate(date,companyId);
     }
-    public List<ShowParam> personBook(String date,String room){
-        return  predestineMapper.bookByPerson(date,room);
+    public List<ShowParam> personBook(String date,String room,int companyId){
+        return  predestineMapper.bookByPerson(date,room,companyId);
     }
     public int bookSuccess(Predestine predestine){
         return predestineMapper.bookSuccess(predestine);

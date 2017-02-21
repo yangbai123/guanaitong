@@ -62,7 +62,7 @@ public class CompanyRegister {
         userTable.setPhoneNumber(Long.parseLong(phoneNumber));
         userTable.setIsAdmin(false);
         userTable.setLoginerType(true);
-        userTable.setCompanyName((request.getParameter("companyName")));
+//        userTable.setCompanyId((request.getParameter("companyName")));
         String licenseKey = YbUtil.generateShortUuid();
         userTable.setLicenseKey(licenseKey);
         boolean resultRegister = registerService.register(userTable);

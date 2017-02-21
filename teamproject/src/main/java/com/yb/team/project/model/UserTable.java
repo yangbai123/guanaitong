@@ -2,7 +2,7 @@ package com.yb.team.project.model;
 
 public class UserTable {
 
-    private String loginId;
+    private int loginId;
 
     private String account;
 
@@ -20,7 +20,17 @@ public class UserTable {
 
     private String registration;
 
+    private int companyId;
+
     private String message;
+
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
 
     public String getMessage() {
         return message;
@@ -30,22 +40,12 @@ public class UserTable {
         this.message = message;
     }
 
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    private String companyName;
-
-    public String getLoginId() {
+    public int getLoginId() {
         return loginId;
     }
 
-    public void setLoginId(String loginId) {
-        this.loginId = loginId == null ? null : loginId.trim();
+    public void setLoginId(int loginId) {
+        this.loginId = loginId;
     }
 
     public String getAccount() {

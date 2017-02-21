@@ -50,8 +50,8 @@ public class UserBook {
      */
     @ResponseBody
     @RequestMapping(value = "/roomsearch")
-    public List<String> roomSearch(HttpServletRequest request) {
-        return managementService.roomSearch();
+    public List<String> roomSearch(HttpServletRequest request,@RequestParam int companyId) {
+        return managementService.roomSearch(companyId);
     }
 
     /**
@@ -62,8 +62,9 @@ public class UserBook {
      */
     @ResponseBody
     @RequestMapping(value = "/booksearch")
-    public List<ShowParam> bookSearch(@RequestParam String date, @RequestParam String userName) {
-        List<ShowParam> showParams = bookService.bookSearch(date);
+    public List<ShowParam> bookSearch(@RequestParam String date, @RequestParam String userName,@RequestParam int companyId) {
+        System.out.println(userName);
+        List<ShowParam> showParams = bookService.bookSearch(date,companyId);
         for (ShowParam showParam : showParams) {
             if (showParam.getBookPeople().equals(userName)) {
                 showParam.setId("mybook");
@@ -87,8 +88,8 @@ public class UserBook {
      */
     @ResponseBody
     @RequestMapping(value = "/personbook")
-    public String personBook(@RequestParam String date, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String place) {
-        List<ShowParam> showParams = bookService.personBook(date, place);
+    public String personBook(@RequestParam int companyId,@RequestParam String date, @RequestParam String startTime, @RequestParam String endTime, @RequestParam String place) {
+        List<ShowParam> showParams = bookService.personBook(date, place,companyId);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm");
         Date sBookDate = null;
         Date eBookDate = null;
@@ -124,9 +125,8 @@ public class UserBook {
      */
     @ResponseBody
     @RequestMapping(value = "/roommessage")
-    public RoomMessage roomMessage(HttpServletRequest request) {
-        String room = request.getParameter("room");
-        List<RoomMessage> roomMessageList = managementService.roomMessage(room);
+    public RoomMessage roomMessage(HttpServletRequest request,@RequestParam String room,@RequestParam int companyId) {
+        List<RoomMessage> roomMessageList = managementService.roomMessage(room,companyId);
         List<String> deviceData = new ArrayList<String>();
         for (RoomMessage roomMessage : roomMessageList) {
             deviceData.add(roomMessage.getDeviceName());
@@ -156,7 +156,7 @@ public class UserBook {
     public String bookSuccess(@RequestParam String date, @RequestParam String startTime,
                               @RequestParam String endTime, @RequestParam String place,
                               @RequestParam String meetingTheme, @RequestParam String booker,
-                              @RequestParam String device) {
+                              @RequestParam String device,@RequestParam int companyId) {
         int id = managementService.roomIdSearch(place);
         Predestine predestine = new Predestine();
         predestine.setMeetingTheme(meetingTheme);
@@ -166,6 +166,7 @@ public class UserBook {
         predestine.setMeetingRoomid(id);
         predestine.setDate(date);
         predestine.setDeviceName(device);
+        predestine.setCompanyId(companyId);
         int resultId = bookService.bookSuccess(predestine);
         if (resultId == 1)
             return "success";

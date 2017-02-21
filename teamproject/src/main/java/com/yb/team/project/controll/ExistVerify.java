@@ -58,19 +58,46 @@ public class ExistVerify {
     }
 
     /**
-     * 授权码是否存在的验证
+     * 注册使用的用户名是否已被使用
+     * @param account
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/accountverify")
+    public String accountVerify(@RequestParam String account, HttpServletRequest request) {
+        UserTable userTable = new UserTable();
+        userTable.setAccount(account);
+        UserTable resultUserTable = userServices.selectByAccount(userTable);
+        if (resultUserTable != null) {
+            return "true";
+        } else {
+            return "false";
+        }
+    }
+
+    /**
+     * 授权码和企業是否存在的验证
      * @param request
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/licenseverify")
-    public String licenseVerify( HttpServletRequest request) {
-        String licenseKey = request.getParameter("licenseKey");
-        String companyName = request.getParameter("companyName");
+    public String licenseVerify(@RequestParam String licenseKey,@RequestParam String companyName, HttpServletRequest request) {
         UserTable userTable = new UserTable();
         userTable.setLicenseKey(licenseKey);
-        userTable.setCompanyName(companyName);
+        userTable.setAccount(companyName);
         UserTable resultUserTable = userServices.selectByLicence(userTable);
+        if (resultUserTable != null) {
+            return "true";
+        } else {
+            return "false";
+        }
+    }
+    @ResponseBody
+    @RequestMapping(value = "/companyverify")
+    public String companyVerify(@RequestParam String companyName, HttpServletRequest request) {
+        UserTable resultUserTable = userServices.selectByCompanyName(companyName);
         if (resultUserTable != null) {
             return "true";
         } else {

@@ -13,4 +13,6 @@ public interface UserTableMapper {
     UserTable selectByEmail(UserTable userTable);
     UserTable selectByPhone(UserTable userTable);
     UserTable selectByLicencekey(UserTable userTable);
+    UserTable selectByAccount(UserTable userTable);
+    UserTable selectByCompanyName(String companyName);
 }

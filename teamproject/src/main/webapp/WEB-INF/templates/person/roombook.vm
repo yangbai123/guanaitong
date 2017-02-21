@@ -169,8 +169,9 @@
         var date = $('.date-txt').text();
         $("#bookdate").val(date);
         $.ajaxSettings.async = false;
+        var companyId = sessionStorage.getItem("companyId");
         var roomData;
-        $.get("/admin/roomsearch", function (data) {
+        $.get("/admin/roomsearch",{companyId:companyId},function (data) {
             roomData = data;
         });
         $("#place").empty();
@@ -181,10 +182,9 @@
         ;
         var bookData;
         var userName = sessionStorage.getItem("userName");
-        $.get("/admin/booksearch", {userName: userName, date: date}, function (data) {
+        $.post("/admin/booksearch", {userName: userName,date: date,companyId:companyId}, function (data) {
             bookData = data;
         });
-
         $('.metting-reservation-bd').timeChart({
             'xAxis': ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00'],
             'yAxis': roomData,
@@ -200,11 +200,12 @@
     }
     function roomMessage() {
         var room = $('#place').val();
+        var companyId = sessionStorage.getItem("companyId");
         $.ajax({
             type: "post",
             url: "/admin/roommessage",
             async: false,
-            data: {room: room},
+            data: {room: room,companyId:companyId},
             success: function (data) {
                 var startTime = data.startTime;
                 var endTime = data.endTime;
@@ -257,6 +258,7 @@
         });
     }
     function bookRoom() {
+        var companyId = sessionStorage.getItem("companyId");
         var booker = sessionStorage.getItem("userName");
         var meetingTheme = $("#theme").val();
         var date = $("#bookdate").val();
@@ -274,6 +276,11 @@
             loading("开始时间不能大于结束时间");
             return;
         }
+        var nowDate = new date();
+        alert(compareTime(date,nowDate));
+        if(compareTime(date,nowDate)){
+            loading("只能预定未来时间");
+        }
         for (var i = 0; i < a.length; i++) {
             if ($(a[i]).is(":checked")) {
                 var data = $(a[i]).attr("value");
@@ -289,7 +296,7 @@
             type: "post",
             url: "/admin/personbook",
             async: false,
-            data: {date: date, startTime: startTime, endTime: endTime, place: place},
+            data: {date: date, startTime: startTime, endTime: endTime, place: place,companyId:companyId},
             success: function (data) {
                 if (data == "success") {
                     $("#isbooked").addClass("hide");
@@ -304,7 +311,8 @@
                             place: place,
                             meetingTheme: meetingTheme,
                             booker:booker,
-                            device:device
+                            device:device,
+                            companyId:companyId
                         },
                         success: function (data) {
                             if(data=="success"){
@@ -341,6 +349,15 @@
                 }
             }
         });
+    }
+
+    function compareTime(time1,time2){
+        var dTime1 = time1.split("-");
+        var dTime2 = time2.split("-");
+        var date1 = new Date(dTime1[0]+"/"+dTime1[1]+"/"+dTime1[2]+"00:00:00");
+        var date2 = new Date(dTime2[0]+"/"+dTime2[1]+"/"+dTime2[2]+"00:00:00");
+        if(date1<date2) return true;
+        return false;
     }
 
 </script>

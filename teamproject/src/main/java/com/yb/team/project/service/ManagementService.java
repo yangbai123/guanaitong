@@ -14,11 +14,11 @@ import java.util.List;
 public class ManagementService {
     @Autowired
     ManagementMapper managementMapper;
-    public List<String> roomSearch(){
-        return managementMapper.roomSearch();
+    public List<String> roomSearch(int companyId){
+        return managementMapper.roomSearch(companyId);
     }
-    public List<RoomMessage> roomMessage(String name){
-        return  managementMapper.roomMessage(name);
+    public List<RoomMessage> roomMessage(String name,int companyId){
+        return  managementMapper.roomMessage(name,companyId);
     }
     public int roomIdSearch(String room){
         return managementMapper.roomIdSearch(room);

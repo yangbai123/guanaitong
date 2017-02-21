@@ -13,6 +13,7 @@
   <select id="roomSearch" resultType="String">
     SELECT meeting_room
     FROM Management
+    WHERE company_id = #{0}
   </select>
   <resultMap id="roomMessage" type="RoomMessage">
     <result column="meeting_room" property="meetingRoom"/>
@@ -20,14 +21,14 @@
     <result column="end_time" property="meetingRoom"/>
     <association property="deviceName" javaType="String"></association>
   </resultMap>
-  <select id="roomMessage" resultType="roomMessage" parameterType="String">
+  <select id="roomMessage" resultType="roomMessage">
         SELECT
         meeting_room as meetingRoom,
         start_time as startTime,
         end_time as endTime,
         device_name as deviceName
         FROM Management LEFT JOIN meetdev_table USING(meeting_roomid) LEFT JOIN device_table USING (device_id)
-        WHERE meeting_room= #{0}
+        WHERE meeting_room= #{0} and company_id = #{1}
   </select>
     <select id="roomIdSearch" resultType="Integer" parameterType="String">
         SELECT

@@ -121,8 +121,6 @@
         var account = $("#account").val();
         var password = $("#password").val();
         var params = {acount:account,password:password};
-//        loading("正在提交，请稍等...");
-//        alert(JSON.stringify(params));
         $.ajax({
             type:"post",
             url:"/admin/logined",
@@ -130,10 +128,13 @@
             success:function(data) {
                 if (data.message == "company") {
                     sessionStorage.setItem("userName",data.account);
+                    sessionStorage.setItem("companyId",data.loginId);
+                    alert(sessionStorage.getItem("companyId"))
                     window.location.href = "/admin/roommanger";
                 }
                 else if(data.message=="person"){
                     sessionStorage.setItem("userName",data.account);
+                    sessionStorage.setItem("companyId",data.companyId)
                     window.location.href = "/admin/roombook";
                 }
                 else if(data.message == "error") {

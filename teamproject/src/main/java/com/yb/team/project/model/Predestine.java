@@ -17,7 +17,16 @@ public class Predestine {
 
     private String date;
 
+    public int getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
+
     private String deviceName;
+    private int companyId;
     public String getDeviceName() {
         return deviceName;
     }
