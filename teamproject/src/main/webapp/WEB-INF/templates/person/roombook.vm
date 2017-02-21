@@ -276,10 +276,10 @@
             loading("开始时间不能大于结束时间");
             return;
         }
-        var nowDate = new date();
-        alert(compareTime(date,nowDate));
+        var nowDate = new Date().format("yyyy-MM-dd");
         if(compareTime(date,nowDate)){
             loading("只能预定未来时间");
+            return;
         }
         for (var i = 0; i < a.length; i++) {
             if ($(a[i]).is(":checked")) {
@@ -351,13 +351,31 @@
         });
     }
 
+    //Date类型大小比较
     function compareTime(time1,time2){
-        var dTime1 = time1.split("-");
-        var dTime2 = time2.split("-");
-        var date1 = new Date(dTime1[0]+"/"+dTime1[1]+"/"+dTime1[2]+"00:00:00");
-        var date2 = new Date(dTime2[0]+"/"+dTime2[1]+"/"+dTime2[2]+"00:00:00");
-        if(date1<date2) return true;
+        if(Date.parse(time1)<Date.parse(time2))
+        {return true;}
         return false;
+    }
+
+    //日期格式化
+    Date.prototype.Format = function(fmt)
+    { //author: meizz
+        var o = {
+            "M+" : this.getMonth()+1,                 //月份
+            "d+" : this.getDate(),                    //日
+            "h+" : this.getHours(),                   //小时
+            "m+" : this.getMinutes(),                 //分
+            "s+" : this.getSeconds(),                 //秒
+            "q+" : Math.floor((this.getMonth()+3)/3), //季度
+            "S"  : this.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt))
+            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+        for(var k in o)
+            if(new RegExp("("+ k +")").test(fmt))
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        return fmt;
     }
 
 </script>
