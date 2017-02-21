@@ -30,11 +30,11 @@
         FROM Management LEFT JOIN meetdev_table USING(meeting_roomid) LEFT JOIN device_table USING (device_id)
         WHERE meeting_room= #{0} and company_id = #{1}
   </select>
-    <select id="roomIdSearch" resultType="Integer" parameterType="String">
+    <select id="roomIdSearch" resultType="Integer" >
         SELECT
         meeting_roomid
         FROM Management
-        WHERE meeting_room= #{0}
+        WHERE meeting_room= #{0}and company_id=#{1}
     </select>
 
 

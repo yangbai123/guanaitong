@@ -29,8 +29,8 @@
 <div class="nav-main">
     <div class="container clearfix">
         <div class="nav-list fr">
-            <a href="http://localhost:8828/admin/roombook" class="nav-active">预定管理</a>
-            <a href="http://localhost:8828/admin/bookrecord">预定记录</a>
+            <a href="/admin/roombook" class="nav-active">预定管理</a>
+            <a href="/admin/bookrecord">预定记录</a>
         </div>
         <h1>会议室预定</h1>
     </div>
@@ -376,6 +376,10 @@
             if(new RegExp("("+ k +")").test(fmt))
                 fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
         return fmt;
+    }
+    function layout(){
+        sessionStorage.clear();
+        window.location.href="/admin/login";
     }
 
 </script>

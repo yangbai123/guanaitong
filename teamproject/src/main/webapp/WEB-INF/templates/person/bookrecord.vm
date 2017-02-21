@@ -161,8 +161,8 @@
 
 </body>
 
-<script src="/js/calendar.js"></script>
-<script src="/js/page.js"></script>
+<script src="/resources/js/calendar.js"></script>
+<script src="/resources/js/page.js"></script>
 <script>
     $(function(){
         $('.u-select').select1();

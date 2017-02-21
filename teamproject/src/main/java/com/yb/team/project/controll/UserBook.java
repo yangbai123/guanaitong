@@ -157,7 +157,7 @@ public class UserBook {
                               @RequestParam String endTime, @RequestParam String place,
                               @RequestParam String meetingTheme, @RequestParam String booker,
                               @RequestParam String device,@RequestParam int companyId) {
-        int id = managementService.roomIdSearch(place);
+        int id = managementService.roomIdSearch(place,companyId);
         Predestine predestine = new Predestine();
         predestine.setMeetingTheme(meetingTheme);
         predestine.setStartTime(startTime);

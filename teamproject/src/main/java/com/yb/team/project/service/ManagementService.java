@@ -20,7 +20,7 @@ public class ManagementService {
     public List<RoomMessage> roomMessage(String name,int companyId){
         return  managementMapper.roomMessage(name,companyId);
     }
-    public int roomIdSearch(String room){
-        return managementMapper.roomIdSearch(room);
+    public int roomIdSearch(String room,int companyId){
+        return managementMapper.roomIdSearch(room,companyId);
     }
 }

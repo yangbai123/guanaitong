@@ -29,8 +29,8 @@
 <div class="nav-main">
     <div class="container clearfix">
         <div class="nav-list fr">
-            <a href="http://localhost:8828/admin/roombook" class="nav-active">预定管理</a>
-            <a href="http://localhost:8828/admin/bookrecord">预定记录</a>
+            <a href="/admin/roombook" class="nav-active">预定管理</a>
+            <a href="/admin/bookrecord">预定记录</a>
         </div>
         <h1>会议室预定</h1>
     </div>
@@ -277,10 +277,9 @@
             return;
         }
         var nowDate = new Date().format("yyyy-MM-dd");
-        alert(nowDate);
-        alert(compareTime(date,nowDate));
         if(compareTime(date,nowDate)){
             loading("只能预定未来时间");
+            return;
         }
         for (var i = 0; i < a.length; i++) {
             if ($(a[i]).is(":checked")) {
@@ -352,11 +351,14 @@
         });
     }
 
+    //Date类型大小比较
     function compareTime(time1,time2){
         if(Date.parse(time1)<Date.parse(time2))
         {return true;}
         return false;
     }
+
+    //日期格式化
     Date.prototype.Format = function(fmt)
     { //author: meizz
         var o = {
@@ -374,6 +376,10 @@
             if(new RegExp("("+ k +")").test(fmt))
                 fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
         return fmt;
+    }
+    function layout(){
+        sessionStorage.clear();
+        window.location.href="/admin/login";
     }
 
 </script>

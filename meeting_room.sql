@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : 172.17.183.3
 Source Server Version : 50173
-Source Host           : 172.17.183.3:3306
+Source Host           : 172.27.35.3:3306
 Source Database       : meeting_room
 
 Target Server Type    : MYSQL
 Target Server Version : 50173
 File Encoding         : 65001
 
-Date: 2017-02-21 17:09:11
+Date: 2017-02-21 20:06:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,7 +48,7 @@ CREATE TABLE `Management` (
   `end_time` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `company_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`meeting_roomid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of Management
@@ -60,6 +60,7 @@ INSERT INTO `Management` VALUES ('5', '鸟巢', '2017-02-21 14:35:54', '1', '12'
 INSERT INTO `Management` VALUES ('6', '水立方', '2017-02-21 14:35:56', '3', '20', 'mmm', '1', '10:00', '21:30', '1');
 INSERT INTO `Management` VALUES ('7', '颐和园', '2017-02-21 14:36:59', '1', '9', '杨柏', '1', '10:00', '10:00', '2');
 INSERT INTO `Management` VALUES ('8', '水立方', '2017-02-21 15:36:11', '3', '20', 'mmm', '1', '10:00', '21:30', '2');
+INSERT INTO `Management` VALUES ('9', '水立方', '2017-02-21 15:36:11', '3', '20', 'mmm', '1', '10:00', '21:30', '5');
 
 -- ----------------------------
 -- Table structure for meetdev_table
@@ -101,7 +102,7 @@ CREATE TABLE `Predestine` (
   `device_name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `company_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`meeting_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of Predestine
@@ -119,7 +120,7 @@ INSERT INTO `Predestine` VALUES ('10', '我爱你', '14:00', '17:00', '3', 'yang
 INSERT INTO `Predestine` VALUES ('11', '我爱你', '9:00', '13:00', '3', 'yangbai1', '2017-02-18', null, '1');
 INSERT INTO `Predestine` VALUES ('12', '我爱你', '9:30', '10:00', '4', 'yangbai', '2017-02-18', null, '1');
 INSERT INTO `Predestine` VALUES ('13', '我爱你', '10:30', '14:00', '2', 'yangbai', '2017-02-18', null, '1');
-INSERT INTO `Predestine` VALUES ('45', '下啊苏打水', '08:30', '21:30', '3', 'yangbai', '2017-02-19', '投影仪,花瓣', '2');
+INSERT INTO `Predestine` VALUES ('45', '下啊苏打水', '08:30', '21:30', '3', '杨柏', '2017-02-19', '投影仪,花瓣', '2');
 INSERT INTO `Predestine` VALUES ('46', 'sad打算', '12:00', '22:00', '2', 'yangbai', '2017-02-19', '笔记本,投影仪,花瓣', '2');
 INSERT INTO `Predestine` VALUES ('47', '再次创造新的撒打算', '10:00', '21:30', '6', 'yangbai', '2017-02-19', '', '2');
 INSERT INTO `Predestine` VALUES ('48', '我真的好爱你', '15:00', '17:00', '2', 'yangbai', '2017-02-20', '笔记本,投影仪,花瓣', '2');
@@ -130,6 +131,7 @@ INSERT INTO `Predestine` VALUES ('55', '大蘇打', '09:00', '21:00', '4', '杨�
 INSERT INTO `Predestine` VALUES ('56', '撒大蘇打', '09:00', '21:00', '4', '杨柏', '2017-02-17', '投影仪,笔记本', '1');
 INSERT INTO `Predestine` VALUES ('57', '撒三大', '12:00', '22:00', '2', '杨柏', '2017-02-19', '笔记本,投影仪,花瓣', '1');
 INSERT INTO `Predestine` VALUES ('58', '撒旦', '12:00', '22:00', '2', '杨柏', '2017-02-24', '笔记本,投影仪,花瓣', '1');
+INSERT INTO `Predestine` VALUES ('59', '阿薩大大', '10:00', '21:30', '6', '杨柏', '2017-02-21', '', '1');
 
 -- ----------------------------
 -- Table structure for user_table

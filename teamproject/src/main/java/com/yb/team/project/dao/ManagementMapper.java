@@ -10,6 +10,6 @@ import java.util.List;
 public interface ManagementMapper {
     List<String> roomSearch(int companyId);
     List<RoomMessage> roomMessage(String room,int companyId);
-    int roomIdSearch(String meetingRoom);
+    int roomIdSearch(String meetingRoom,int companyId);
 
 }
